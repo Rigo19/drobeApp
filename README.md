@@ -34,7 +34,9 @@ We're wanting to create a place where those who love clothing and the possibilit
 
 
 ## Features
+
 Feature 1
+
 - As a developer, I would like the repo to have some early set up in the form of organizing the directories, creating a database and its tables, and CSS styling that will be able to be used for different site pages.
 
   - **Tasks:**
