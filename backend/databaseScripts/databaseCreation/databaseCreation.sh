@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo mysql -u root -p -e "create database drobeApp"
+sudo mysql -u root -p -e "create database if not exists drobeApp"
 
 #Run the file using ./databaseCreation.sh
 
