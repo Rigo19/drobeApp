@@ -2,7 +2,7 @@
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists OutfitsByUser
     ( 
-    outfitID INT AUTO_INCREMENT,
+    outfitID INT AUTO_INCREMENT NOT NULL,
     outfitName VARCHAR(100) NOT NULL,
     userID INT NOT NULL,
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

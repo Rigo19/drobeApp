@@ -2,8 +2,8 @@
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists ArticlesToOutfits
     ( 
-    outfitID INT,
-    clothingArticleID INT,
+    outfitID INT NOT NULL,
+    clothingArticleID INT NOT NULL,
     clothingTypeID INT NOT NULL,
     userID INT NOT NULL,
     clothingArticleName VARCHAR (50) NOT NULL
