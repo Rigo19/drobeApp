@@ -1,12 +1,11 @@
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists ArticlesToOutfits
     ( 
-    outfitID INT AUTO_INCREMENT,
-    clothingArticleID INT AUTO_INCREMENT,
+    outfitID INT,
+    clothingArticleID INT,
     clothingTypeID INT NOT NULL,
     userID INT NOT NULL,
     clothingArticleName VARCHAR (50) NOT NULL,
-    PRIMARY KEY (outfitID) 
     );
     "
 

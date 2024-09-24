@@ -2,7 +2,7 @@
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists ArticlesToImage
     ( 
-    clothingArticleID INT AUTO_INCREMENT,
+    clothingArticleID INT,
     Image MEDIUMBLOB,
     PRIMARY KEY (clothingArticleID) 
     );
