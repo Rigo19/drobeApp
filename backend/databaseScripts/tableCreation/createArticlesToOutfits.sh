@@ -6,7 +6,7 @@ sudo mysql -u root -p -e "use drobeApp;
     clothingArticleID INT,
     clothingTypeID INT NOT NULL,
     userID INT NOT NULL,
-    clothingArticleName VARCHAR (50) NOT NULL,
+    clothingArticleName VARCHAR (50) NOT NULL
     );
     "
 
