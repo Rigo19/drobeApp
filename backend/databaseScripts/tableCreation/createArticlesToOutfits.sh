@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists ArticlesToOutfits
     ( 
