@@ -2,7 +2,7 @@
 sudo mysql -u root -p -e "use drobeApp;
     create table if not exists ArticlesOfClothing 
     ( 
-    clothingArticleID INT AUTO_INCREMENT,
+    clothingArticleID INT AUTO_INCREMENT NOT NULL,
     clothingTypeID INT NOT NULL, 
     clothingType VARCHAR(50) NOT NULL, 
     clothingArticleName VARCHAR (50) NOT NULL,
