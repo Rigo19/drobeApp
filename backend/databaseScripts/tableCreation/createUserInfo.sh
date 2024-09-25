@@ -5,7 +5,7 @@ sudo mysql -u root -p -e "use drobeApp;
     userID INT NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
-    timeaAccountCreated TIMESTAMP,
+    timeAccountCreated TIMESTAMP,
     timeZone VARCHAR(5) NOT NULL,
     location VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
