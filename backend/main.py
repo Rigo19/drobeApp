@@ -3,7 +3,7 @@
 
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile
 from pydantic import BaseModel
 import mysql.connector
 from datetime import datetime
@@ -54,7 +54,7 @@ async def root():
     return {"message": "This is the root endpoint AKA path AKA route"}
 
 
-@app.post("/createArticleOfClothing")
+@app.post("/createArticleOfClothing/")
 async def createArticleOfClothing(clothingArticle: clothingArticle):
     #line below creates the timestamp that will be stored in database
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -78,5 +78,14 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
     drobeDatabaseConnection.commit()
 
     return clothingArticle
+
+
+# FastAPI documentation for dealing with files is a good reference:
+# https://fastapi.tiangolo.com/tutorial/request-files/
+
+@app.post("/createArticleOfClothingImage/")
+async def createArticleOfClothingImage(image: UploadFile):
+    ok = image.file
+    print(ok)
 
 
