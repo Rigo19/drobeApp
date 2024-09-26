@@ -1,9 +1,10 @@
 # Use the following link as reference for initial API setup:
 # https://fastapi.tiangolo.com/tutorial/first-steps/
 
+from typing import Annotated
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 import mysql.connector
 from datetime import datetime
@@ -46,9 +47,9 @@ class clothingArticle(BaseModel):
 createArticleOfClothing_SQL_Query = ("INSERT INTO ArticlesOfClothing "
                                      "(clothingTypeID, clothingType, clothingArticleName, userID, timeAdded, numberOfOutfitsAssociatedWith) "
                                      "VALUES (%s, %s, %s, %s, %s, %s)")
+selectingArticleID_Query = ("select clothingArticleID from ArticlesOfClothing where userID = %s ")
 
-
-
+insertImage_Query = ("insert into ArticlesToImage values (%s, %s)")
 @app.get("/")
 async def root():
     return {"message": "This is the root endpoint AKA path AKA route"}
@@ -83,9 +84,34 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
 # FastAPI documentation for dealing with files is a good reference:
 # https://fastapi.tiangolo.com/tutorial/request-files/
 
-@app.post("/createArticleOfClothingImage/")
-async def createArticleOfClothingImage(image: UploadFile):
-    ok = image.file
-    print(ok)
+@app.post("/createArticleOfClothingImage/{userID}")
+async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: int):
+   
+    # It may seem strange but mysql requires a tuple to be used for the values when executing
+    userID = (userID,)
+
+    # needing to find out clothingArticleID from the ArticlesOfClothing table
+    drobeDatabaseCursor.execute(selectingArticleID_Query, userID)
+    
+    # this code retrieves the clothingArticleID associated to the most recent creation by the user
+    test = drobeDatabaseCursor.fetchall()
+    clothingArticleID = test[-1][0]
+    
+
+    # running query that will save the clothingArticleID and image file to the db table
+    # entitled 'ArticleToImage'
+    
+    dataForQuery = (clothingArticleID, image)
+    drobeDatabaseCursor.execute(insertImage_Query, dataForQuery)
+
+    drobeDatabaseConnection.commit()
+    # save image to DB with corresponding clothingArticleID
+
+    return "Succesful Image Upload"
+
+
+    ## **NOTE**
+    ## The "/createArticleOfClothingImage/{userID}" and "/createArticleOfClothing/" will 
+    # each have to be called by the front end code at the same time "
 
 
