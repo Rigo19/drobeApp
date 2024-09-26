@@ -2,9 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
-body {
+
+/*body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f4f9;
     color: #333;
@@ -12,4 +15,153 @@ body {
     padding: 20px;
     max-width: 1200px;
     margin: auto;
+    padding: 20px;
+} */
+
+/*background-image: url("main/images/pinkBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    */
+
+/* Styles for the displayCloset section */
+#displayCloset {
+    padding: 40px; /* Add some padding around the section */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center-align text */
+    margin: 20px; /* Add margin around the section */
+    color: #800000;
+}
+
+/* Styles for section-p1 class*/
+.section-p1{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    margin-top: 20px;
+    padding: 20px;
+}
+
+
+h1{
+    color: #800000;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+
+.category-button{
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #800000;
+    transition: background-color 0.3s ease;
+}
+
+.category-button:hover{
+    background-color: #e9ecef;
+}
+
+.category-button-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* 
+Alligned the navigation to be presented in one row 
+rether then having them allined in a column
+web page
+*/
+#navigation_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* 
+This function we will remove the bullet 
+points out of our navigation links
+we will also add padding to have some spacing in between
+navivation links
+*/
+#navigation_bar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+/*
+This function we will remove the underlines 
+from our navigation links and add smooth changing
+transitions from one link to the other
+*/
+#navigation_bar li a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+/* 
+This function will add hover effects 
+to our navigation links
+while also highlighting which link page the user is
+on
+*/
+#navigation_bar li a:hover,
+#navigation_bar li a.active {
+    color: #800000;
+}
+
+/*  
+This function we add an underlining to whatever link page the user is
+on
+*/
+#navigation_bar li a.active::after,
+#navigation_bar li a:hover::after{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #800000;
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Horizontally aligning the Clothes Grid */
+.clothes-grid {
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: center; /* Centering items horizontally */
+    gap: 20px; /* Space between items */
+    flex-wrap: wrap; /* allow wrapping to the next row */
+}
+
+/* want a total of 3 itmes per row */
+.clothes-item {
+    width: calc(33.333% - 20px);
+    text-align: center;
+}
+
+.clothes-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.clothes-item p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
 }
