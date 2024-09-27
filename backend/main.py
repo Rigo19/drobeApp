@@ -4,12 +4,17 @@
 from typing import Annotated
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 import mysql.connector
 from datetime import datetime
 
 
+from mysql.connector import errors
+#
+# 
+# mysql.connector.Error
+#errors.DatabaseError
 
 load_dotenv()
 
@@ -73,12 +78,19 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
 
     clothing_data = (clothingTypeID, clothingType, clothingArticleName, userID, timestamp, numberOfOutfitsAssociatedWith)
 
-    drobeDatabaseCursor.execute(createArticleOfClothing_SQL_Query, clothing_data)
-    #print(clothingArticle)
 
-    drobeDatabaseConnection.commit()
+    try:
+        drobeDatabaseCursor.execute(createArticleOfClothing_SQL_Query, clothing_data)
+        #print(clothingArticle)
 
-    return clothingArticle
+        drobeDatabaseConnection.commit()
+
+    except mysql.connector.Error:
+        raise HTTPException(status_code=500, detail="Failure saving to DB")
+
+
+
+    #return clothingArticle
 
 
 # FastAPI documentation for dealing with files is a good reference:
