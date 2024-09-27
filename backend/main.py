@@ -5,6 +5,7 @@ from typing import Annotated
 import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import mysql.connector
 from datetime import datetime
@@ -24,6 +25,7 @@ databaseUser = os.getenv('user')
 databasePassword = os.getenv('password')
 
 
+
 drobeDatabaseConnection = mysql.connector.connect(
     host = databaseHost,
     user = databaseUser,
@@ -37,8 +39,16 @@ drobeDatabaseConnection = mysql.connector.connect(
 
 drobeDatabaseCursor = drobeDatabaseConnection.cursor()
 
+origins = ['*']
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # this clothingArticle model below represents the fields that 
 # will be received in the Request body sent from the UI
