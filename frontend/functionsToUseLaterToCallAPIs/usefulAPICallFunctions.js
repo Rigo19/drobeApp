@@ -1,6 +1,9 @@
 imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
 clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
 
+document.getElementById("submitButton").addEventListener('submit', (event) =>{
+    event.preventDefault();
+})
 
 // The function below will be used to send an image file on an API call
 async function createArticleImage(){
@@ -18,7 +21,6 @@ async function createArticleImage(){
 
 
 async function createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID ){
-
     const response = await fetch(clothingArticleCreation_API_url, {
         method: "post",
         headers: {"Content-Type": "application/json"},
@@ -36,4 +38,18 @@ async function createArticleOfClothing(clothingType, clothingTypeID, clothingArt
 
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
-document.getElementById("submitButton").addEventListener("click", createArticleImage);
+document.getElementById("submitButton").addEventListener("click", (event) => {
+    
+    clothingType = document.getElementById('articleType').value;
+    console.log(clothingType);
+    clothingTypeID = document.getElementById('clothingTypeID').value;
+    console.log(clothingTypeID);
+    clothingArticleName = document.getElementById('articleName').value;
+    console.log(clothingArticleName);
+    userID = document.getElementById('userID').value;
+    console.log(userID);
+    createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID);
+    createArticleImage();
+});
+
+
