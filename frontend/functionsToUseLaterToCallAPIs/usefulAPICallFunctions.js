@@ -5,8 +5,8 @@ document.getElementById("submitButton").addEventListener('submit', (event) =>{
     event.preventDefault();
 })
 
-// The function below will be used to send an image file on an API call
-async function createArticleImage(){
+// The function below will be used to send an image file on an API call. Use this function as is
+export async function createArticleImage(){
     var fileInput = document.querySelector('input[type="file"]')
     var formData = new FormData();
 
@@ -19,6 +19,10 @@ async function createArticleImage(){
     response.json().then((result) => console.log(result.message));
 }
 
+
+// The function below may be molded into however is best to use it.
+// The function could be used as is, or it may be better if you modify it fit your code better
+// Let me know if you have any questions about it - Blake
 
 async function createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID ){
     const response = await fetch(clothingArticleCreation_API_url, {
@@ -34,7 +38,6 @@ async function createArticleOfClothing(clothingType, clothingTypeID, clothingArt
         response.json().then((result) => console.log(result.message))
       );
     }
-
 
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
