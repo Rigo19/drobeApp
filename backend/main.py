@@ -158,3 +158,27 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
     # each have to be called by the front end code at the same time "
 
 
+#Following code would return all clothing articles for a user.
+@app.get("/getAllClothingArticles/")
+async def get_all_clothing_articles_by_user(userID: int):
+    retrieve_articles_by_user_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
+    
+    drobeDatabaseCursor.execute(retrieve_articles_by_user_query, (userID,))
+    articles = drobeDatabaseCursor.fetchall()
+
+    if not articles:
+        return {"message": "No articles found in the user's closet"}
+    
+    result = []
+    for article in articles:
+        result.append({
+            "clothingArticleID": article[0],
+            "clothingTypeID": article[1],
+            "clothingType": article[2],
+            "clothingArticleName": article[3],
+            "userID": article[4],
+            "timeAdded": article[5],
+            "numberOfOutfitsAssociatedWith": article[6]
+        })
+
+    return result
