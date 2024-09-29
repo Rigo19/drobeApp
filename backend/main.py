@@ -159,7 +159,7 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
 
 
 #Following code would return all clothing articles for a user.
-@app.get("/getAllClothingArticles/")
+@app.get("/getAllClothingArticlesByUser/")
 async def get_all_clothing_articles_by_user(userID: int):
     retrieve_articles_by_user_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
     
@@ -182,3 +182,24 @@ async def get_all_clothing_articles_by_user(userID: int):
         })
 
     return result
+
+#Following would return the image/images for a single article of clothing
+@app.get("/get_images_for_clothing_article/{clothingArticleID}")
+async def get_images_for_clothing_article(clothingArticleID: int):
+    retrieve_images_query = "SELECT * FROM ArticlesToImage WHERE clothingArticleID = %s"
+    
+    drobeDatabaseCursor.execute(retrieve_images_query, (clothingArticleID,))
+    images = drobeDatabaseCursor.fetchall()
+
+    if not images:
+        return {"message": "No images found for this clothing article"}
+    
+    result = []
+    for image in images:
+        result.append({
+            "clothingArticleID": image[0],
+            "image": image[1]
+        })
+
+    return result
+
