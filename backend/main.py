@@ -194,14 +194,9 @@ async def get_images_for_clothing_article(clothingArticleID: int):
     if not images:
         return {"message": "No images found for this clothing article"}
     
-    result = []
-    for image in images:
-        result.append({
-            "clothingArticleID": image[0],
-            "image": image[1]
-        })
+    firstImage = images[0][0]
 
-    return {"Images for Clothing Aritcle: ": result}
+    return Response(content = firstImage, media_type = "image")
 
 #Following code could be useful in testing frontend (Probably won't be used in final code)
 @app.get("/getAllClothingArticles/")
