@@ -203,3 +203,27 @@ async def get_images_for_clothing_article(clothingArticleID: int):
 
     return result
 
+#Following code could be useful in testing frontend (Probably won't be used in final code)
+@app.get("/getAllClothingArticles/")
+async def get_all_clothing_articles():
+    retrieve_all_articles_query = "SELECT * FROM ArticlesOfClothing"
+    
+    drobeDatabaseCursor.execute(retrieve_all_articles_query)
+    articles = drobeDatabaseCursor.fetchall()
+
+    if not articles:
+        return {"message": "No articles found in closet"}
+    
+    result = []
+    for article in articles:
+        result.append({
+            "clothingArticleID": article[0],
+            "clothingTypeID": article[1],
+            "clothingType": article[2],
+            "clothingArticleName": article[3],
+            "userID": article[4],
+            "timeAdded": article[5],
+            "numberOfOutfitsAssociatedWith": article[6]
+        })
+
+    return result
