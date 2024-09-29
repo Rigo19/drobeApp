@@ -159,11 +159,11 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
 
 
 #Following code would return all clothing articles for a user.
-@app.get("/getAllClothingArticlesByUser/")
-async def get_all_clothing_articles_by_user(userID: int):
-    retrieve_articles_by_user_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
+@app.get("/getAllClothingArticlesByUserID/")
+async def get_all_clothing_articles_by_userID(userID: int):
+    retrieve_articles_by_userID_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
     
-    drobeDatabaseCursor.execute(retrieve_articles_by_user_query, (userID,))
+    drobeDatabaseCursor.execute(retrieve_articles_by_userID_query, (userID,))
     articles = drobeDatabaseCursor.fetchall()
 
     if not articles:
@@ -181,7 +181,7 @@ async def get_all_clothing_articles_by_user(userID: int):
             "numberOfOutfitsAssociatedWith": article[6]
         })
 
-    return result
+    return {"All Clothing Articles: ": result}
 
 #Following would return the image/images for a single article of clothing
 @app.get("/get_images_for_clothing_article/{clothingArticleID}")
@@ -201,7 +201,7 @@ async def get_images_for_clothing_article(clothingArticleID: int):
             "image": image[1]
         })
 
-    return result
+    return {"Images for Clothing Aritcle: ": result}
 
 #Following code could be useful in testing frontend (Probably won't be used in final code)
 @app.get("/getAllClothingArticles/")
@@ -226,4 +226,4 @@ async def get_all_clothing_articles():
             "numberOfOutfitsAssociatedWith": article[6]
         })
 
-    return result
+    return {"All Clothing Articles: ": result}
