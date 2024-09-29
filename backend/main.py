@@ -159,7 +159,7 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
 
 
 #Following code would return all clothing articles for a user.
-@app.get("/getAllClothingArticlesByUserID/")
+@app.get("/getAllClothingArticlesByUserID/{userID}")
 async def get_all_clothing_articles_by_userID(userID: int):
     retrieve_articles_by_userID_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
     
