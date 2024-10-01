@@ -18,6 +18,13 @@
     padding: 20px;
 } */
 
+#recommended-outfit-block{
+    border-style: solid;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
 /*background-image: url("main/images/pinkBackground.jpg");
     background-size: cover;
     background-position: center;
