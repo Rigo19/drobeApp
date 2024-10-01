@@ -184,7 +184,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
     return {"All Clothing Articles: ": result}
 
 #Following would return the image/images for a single article of clothing
-@app.get("/get_images_for_clothing_article/{clothingArticleID}")
+@app.get("/getImagesForClothingArticle/{clothingArticleID}")
 async def get_images_for_clothing_article(clothingArticleID: int):
     retrieve_images_query = "SELECT * FROM ArticlesToImage WHERE clothingArticleID = %s"
     
@@ -262,3 +262,28 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    
+#Following code should update the image for an item
+
+@app.post("/updateClothingArticleImage/{clothingArticleID}")
+async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
+    try:
+        drobeDatabaseCursor.execute("SELECT clothingArticleID FROM ArticlesOfClothing WHERE clothingArticleID = %s", (clothingArticleID,))
+        result = drobeDatabaseCursor.fetchone()
+
+        if not result:
+            raise HTTPException(status_code=404, detail ="Clothing article not found")
+        
+        #image_data=await image.read()
+
+        insert_image_query = "INSERT INTO ArticlesToImage (clothingArticleID, imageData) VALUES (%s, %s)"
+        drobeDatabaseCursor.execute(insert_image_query), (clothingArticleID, image)
+
+        drobeDatabaseCursor.commit()
+
+        return {"Image updated successfully"}
+    
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
