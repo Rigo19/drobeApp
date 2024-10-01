@@ -226,8 +226,8 @@ async def get_all_clothing_articles():
 #Following code should update item type and name
 
 class clothingArticleUpdate(BaseModel):
-    clothingType: Optional[str]
-    clothingArticleName: Optional[str]
+    clothingType: Optional[str] = None
+    clothingArticleName: Optional[str] = None
 
 @app.patch("/changeClothingArticleData/{clothingArticleId}")
 async def change_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):
@@ -252,7 +252,7 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     update_values.append(clothingArticleId)
 
     try:
-        drobeDatabaseCursor.execute(update_query, update_values)
+        drobeDatabaseCursor.execute(update_query, tuple(update_values))
         drobeDatabaseConnection.commit()
 
         if drobeDatabaseCursor.rowcount == 0:
