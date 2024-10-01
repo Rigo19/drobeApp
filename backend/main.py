@@ -248,7 +248,7 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     if not update_fields:
         raise HTTPException(status_code = 400, detail ="No data provided to update")
     
-    update_query += ", ".join(update_fields + " WHERE clothingArticleID = %s")
+    update_query += ", ".join(update_fields) + " WHERE clothingArticleID = %s"
     update_values.append(clothingArticleId)
 
     try:
