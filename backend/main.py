@@ -265,21 +265,22 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
 #Following code should update the image for an item
 
-@app.post("/updateClothingArticleImage/{clothingArticleID}")
+@app.patch("/updateClothingArticleImage/{clothingArticleID}")
 async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
+    
+    check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
+
     try:
-        drobeDatabaseCursor.execute("SELECT clothingArticleID FROM ArticlesOfClothing WHERE clothingArticleID = %s", (clothingArticleID,))
-        result = drobeDatabaseCursor.fetchone()
+        drobeDatabaseCursor.execute(check_ID, (clothingArticleID,))
+        exists = drobeDatabaseCursor.fetchone()
 
-        if not result:
-            raise HTTPException(status_code=404, detail ="Clothing article not found")
+        if not exists:
+            return{"Article not Found"}
         
-        #image_data=await image.read()
+        insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
+        drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
 
-        insert_image_query = "INSERT INTO ArticlesToImage (clothingArticleID, imageData) VALUES (%s, %s)"
-        drobeDatabaseCursor.execute(insert_image_query), (clothingArticleID, image)
-
-        drobeDatabaseCursor.commit()
+        drobeDatabaseConnection.commit()
 
         return {"Image updated successfully"}
     
