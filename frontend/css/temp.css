@@ -205,3 +205,81 @@ on
     justify-content: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.outfits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Outfit Card */
+.outfit-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Card depth */
+    width: 250px; /* Fixed card width */
+    height: 400px;
+    text-align: center;
+    text-size-adjust: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.outfit-cards {
+    display: grid;
+    /* The grid will have as many columns as fit within the container, with each card being at least 250px wide */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Space between the cards */
+    padding: 20px;
+}
+
+.outfit-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.outfit-details {
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.outfit-details h3 {
+    margin: 0;
+    font-size: small;
+}
+
+.outfit-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.outfit-actions button {
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.outfit-actions button:hover {
+    background-color: #0056b3;
+}
