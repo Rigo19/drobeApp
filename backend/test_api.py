@@ -64,7 +64,31 @@ def test_create_ClothingArticleImageBadExample1():
     response = client.post("/createArticleOfClothingImage/0", data= {"imag":f})
     assert response.status_code == 422
 
+# missing the field name of 'image' in front of the image for the request
+def test_create_ClothingArticleImageBadExample2():
+    # first part of function below gets the absolute path to the directory above this current file
+    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    with open(path, "rb") as image:
+        f = image.read()
+        byteImage = bytes(f)
 
+    response = client.post("/createArticleOfClothingImage/0", data = {" ":f})
+    assert response.status_code == 422
     
+
+def test_get_AllClothingArticlesByUserIDGoodExample1():
+    response = client.get("/getAllClothingArticlesByUserID/0")
+    
+    assert response.status_code == 200
+    assert "All Clothing Articles: " in response.json()
+    assert len(response.json()["All Clothing Articles: "]) > 0
+
+def test_get_AllClothingArticlesByUserIDGoodExample2():
+    response = client.get("/getAllClothingArticlesByUserID/100000")
+
+    assert response.status_code == 200
+    assert response.json()["message"] == "No articles found in the user's closet"
+
+
 
 
