@@ -1,5 +1,10 @@
+//url for api endpoints used for uploading an image of clothing article 
 imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
+//url for api endpoints used for creating an articles of clothing in the database for the uer
 clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
+//url for api endpoints used for fetching all clothing articles 
+getAllArticlesOfClothing_API_url  = "http://127.0.0.1.8000/getAllArticlesOfClothing"
+
 
 // Prevent default form submission and handle the button click
 document.getElementById("submitButton").addEventListener('submit', (event) =>{
@@ -7,7 +12,7 @@ document.getElementById("submitButton").addEventListener('submit', (event) =>{
 })
 
 // The function to send an image file via API call
-export async function createArticleImage(){
+async function createArticleImage(){
     var fileInput = document.querySelector('input[type="file"]')
     var formData = new FormData();
 
@@ -41,6 +46,23 @@ async function createArticleOfClothing(clothingType, clothingTypeID, clothingArt
       );
     }
 
+//get(fetcht) all the clothing pieces from the database of the specific user
+async function getAllArticlesOfClothing(){
+   const response = await fetch(getAllArticlesOfClothing_API_url, {
+    method: "Get",
+    headers: {"Content-Type": "application/json"}
+   });
+
+   const data = await response.json();
+   return data.articles;
+}
+
+//this function will allow the fetched data(clothing article info)
+//to be displayed 
+//(process the JSON response and genertate HTML elements for each piece of clothing)
+
+
+
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
 document.getElementById("submitButton").addEventListener("click", (event) => {
@@ -55,6 +77,7 @@ document.getElementById("submitButton").addEventListener("click", (event) => {
     console.log(userID);
     createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID);
     createArticleImage();
+    window.location.reload();
 });
 
 
