@@ -90,5 +90,51 @@ def test_get_AllClothingArticlesByUserIDGoodExample2():
     assert response.json()["message"] == "No articles found in the user's closet"
 
 
+def test_get_ClothingArticleImageGoodExample1():
+    response = client.get("/get_images_for_clothing_article/5000")
+
+    assert response.status_code == 200
+    assert response.json()["message"] == "No images found for this clothing article"
+
+def test_get_ClothingArticleImageBadExample1():
+    # case where articleID isn't entered
+    response = client.get("/get_images_for_clothing_article/")
+
+    assert response.status_code == 404
+
+def test_changeClothingArticleDataBadExample1():
+    response = client.patch("/changeClothingArticleData/1900" ,
+                            json={"clothingType":"jacket", "clothingArticleName": "Northface"})
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Clothing article not found"
+
+# forgetting articleID in the endpoint
+def test_changeClothingArticleDataBadExample2():
+    response = client.patch("/changeClothingArticleData/" ,
+                            json={"clothingType":"jacket", "clothingArticleName": "Northface"})
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Not Found"
+
+# entering path forgetting a clothingArticleID
+def test_changeClothingArticleImageBadExample1():
+    response = client.patch("/updateClothingArticleImage/")
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Not Found"
+
+def test_changeClothingArticleImageBadExample2():
+    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    with open(path, "rb") as image:
+        f = image.read()
+        byteImage = bytes(f)
+    response = client.patch("/updateClothingArticleImage/100", data= {"image":f})
+
+    assert response.status_code == 200
+    
+
+
+
 
 
