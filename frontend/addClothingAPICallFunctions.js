@@ -1,10 +1,9 @@
 //url for api endpoints used for uploading an image of clothing article 
 imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
-//url for api endpoints used for creating an articles of clothing in the database for the uer
+//url for api endpoints used for creating an articles of clothing in the database for the user
 clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
 //url for api endpoints used for fetching all clothing articles 
-getAllArticlesOfClothing_API_url  = "http://127.0.0.1.8000/getAllArticlesOfClothing"
-
+getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticles/"
 
 // Prevent default form submission and handle the button click
 document.getElementById("submitButton").addEventListener('submit', (event) =>{
@@ -54,30 +53,65 @@ async function getAllArticlesOfClothing(){
    });
 
    const data = await response.json();
-   return data.articles;
+   console.log(data);
+   return data["All clothing Articles: "] || [];
 }
 
 //this function will allow the fetched data(clothing article info)
 //to be displayed 
 //(process the JSON response and genertate HTML elements for each piece of clothing)
+function displayArticlesOfClothing(articles){
+  console.log("Dispaly articles:", articles);
+  const clothesGrid = document.querySelector('.clothes-grid');
+  //if there is any times within the grid currently delete them
+  clothesGrid.innerHTML = '';
 
+  articles.forEach(article => {
+    //create a section for each piece of clothing
+    const divItem = document.createElement('div');
+    divItem.className = 'clothes-item';
 
+    //add clothing image 
+    const img = document.createElement('img');
+    //if image has a pic use if not use default image
+    img.src = article.imageUrl ? article.imageUrl : 'default-image.png';
+    img.alt = article.clothingArticleName;
+
+    //add clothing name
+    const paragraphArtcName = document.createElement('p');
+    paragraphArtcName.textContent = article.clothingArticleName;
+
+    //add(connect) the image and name of piece of clothes into the box
+    divItem.appendChild(img);
+    divItem.appendChild(paragraphArtcName);
+    //put the box into a section 
+    clothesGrid.appendChild(divItem);
+  });
+}
 
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
-document.getElementById("submitButton").addEventListener("click", (event) => {
+document.getElementById("submitButton").addEventListener("click", async (event) => {
     
     clothingType = document.getElementById('articleType').value;
     console.log(clothingType);
+
     clothingTypeID = document.getElementById('clothingTypeID').value;
     console.log(clothingTypeID);
+
     clothingArticleName = document.getElementById('articleName').value;
     console.log(clothingArticleName);
+
     userID = document.getElementById('userID').value;
     console.log(userID);
-    createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID);
-    createArticleImage();
-    window.location.reload();
+
+    await createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID);
+    await createArticleImage();
+
+    const articles = await getAllArticlesOfClothing();
+    displayArticlesOfClothing(articles);
+
+    //window.location.reload();
 });
 
 
