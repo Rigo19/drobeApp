@@ -186,7 +186,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
 #Following would return the image/images for a single article of clothing
 @app.get("/get_images_for_clothing_article/{clothingArticleID}")
 async def get_images_for_clothing_article(clothingArticleID: int):
-    retrieve_images_query = "SELECT * FROM ArticlesToImage WHERE clothingArticleID = %s"
+    retrieve_images_query = "SELECT Image FROM ArticlesToImage WHERE clothingArticleID = %s"
     
     drobeDatabaseCursor.execute(retrieve_images_query, (clothingArticleID,))
     images = drobeDatabaseCursor.fetchall()
