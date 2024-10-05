@@ -358,6 +358,8 @@ async def delete_clothing_article(clothingArticleID: int):
         drobeDatabaseCursor.execute("SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s", (clothingArticleID,))
         article_exists = drobeDatabaseCursor.fetchone()
 
+        if not article_exists:
+            raise HTTPException(status_code=404, detail="Clothing article not found")
 
          # if the article exists, then delete it from the database
         drobeDatabaseCursor.execute(delete_clothing_article_query, (clothingArticleID,))
