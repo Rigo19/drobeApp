@@ -133,7 +133,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
     const articles = await getAllArticlesOfClothing();
     displayArticlesOfClothing(articles);
 
-    //window.location.reload();
+    window.location.reload();
 });
 
 async function main() {
