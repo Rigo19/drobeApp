@@ -1,7 +1,7 @@
 # DrobeApp
 ## Vision:
 
- This project consists of team members James Cowley, Elham Ul Islam, Rigo Lizaola, and Blake Jameson.
+ This project consists of team members James Cowley, Elham Ul Islam, Rigo Lizaola, Blake Jameson, and Mackenzie Toliver.
 
  We are creating an application where you have access to a virtual wardrobe. Here, you can save the different outfits and clothes you have.
 
