@@ -347,3 +347,5 @@ async def createOutfit(outfit: Outfit):
         raise HTTPException(status_code=500, detail="Failed to create outfit: " + str(e))
 
     return {"message": "Outfit created successfully", "outfitID": outfitID}
+
+delete_clothing_article_query = "DELETE FROM ArticlesOfClothing WHERE clothingArticleID = %s"
