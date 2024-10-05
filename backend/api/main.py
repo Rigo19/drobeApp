@@ -81,11 +81,6 @@ insertOutfitItems_SQL_Query = (
     "INSERT INTO OutfitItems (outfitID, clothingArticleID) VALUES (%s, %s)"
 )
 
-@app.get("/")
-async def root():
-    return {"message": "This is the root endpoint AKA path AKA route"}
-
-
 @app.post("/createArticleOfClothing/", status_code=201)
 async def createArticleOfClothing(clothingArticle: clothingArticle):
     #line below creates the timestamp that will be stored in database
@@ -104,7 +99,6 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
 
     clothing_data = (clothingTypeID, clothingType, clothingArticleName, userID, timestamp, numberOfOutfitsAssociatedWith)
 
-
     try:
         drobeDatabaseCursor.execute(createArticleOfClothing_SQL_Query, clothing_data)
         #print(clothingArticle)
@@ -117,9 +111,6 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
     
     return {"message": "Succesfully Uploaded clothing article to DB"}
    
-
-    #return clothingArticle
-
 
 # FastAPI documentation for dealing with files is a good reference:
 # https://fastapi.tiangolo.com/tutorial/request-files/
@@ -137,7 +128,6 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
     test = drobeDatabaseCursor.fetchall()
     clothingArticleID = test[-1][0]
     
-
     # running query that will save the clothingArticleID and image file to the db table
     # entitled 'ArticleToImage'
     dataForQuery = (clothingArticleID, image)
@@ -161,7 +151,7 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
         drobeDatabaseConnection.commit()
 
         response.status_code = 200
-        return {"Message":"Clothing Article was deleted from DB due to error in saving the image!"}
+        return {"message":"Clothing Article was deleted from DB due to error in saving the image!"}
 
     return {"message":"Succesful Image Upload"}
 
@@ -194,7 +184,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
             "numberOfOutfitsAssociatedWith": article[6]
         })
 
-    return {"All Clothing Articles: ": result}
+    return {"message": result}
 
 #Following would return the image/images for a single article of clothing
 @app.get("/get_images_for_clothing_article/{clothingArticleID}")
@@ -234,7 +224,7 @@ async def get_all_clothing_articles():
             "numberOfOutfitsAssociatedWith": article[6]
         })
 
-    return {"All Clothing Articles: ": result}
+    return {"message": result}
 
 #Following code should update item type and name
 
@@ -242,8 +232,8 @@ class clothingArticleUpdate(BaseModel):
     clothingType: Optional[str] = None
     clothingArticleName: Optional[str] = None
 
-@app.patch("/changeClothingArticleData/{clothingArticleId}")
-async def change_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):
+@app.patch("/updateClothingArticleData/{clothingArticleId}")
+async def update_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):
 
     update_query = "UPDATE ArticlesOfClothing SET "
 
@@ -288,14 +278,14 @@ async def update_clothing_article_image(clothingArticleID: int, image: Annotated
         exists = drobeDatabaseCursor.fetchone()
 
         if not exists:
-            return{"Article not Found"}
+            return{"message": "Article not Found"}
         
         insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
         drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
 
         drobeDatabaseConnection.commit()
 
-        return {"Image updated successfully"}
+        return {"message": "Image updated successfully"}
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
@@ -303,29 +293,6 @@ async def update_clothing_article_image(clothingArticleID: int, image: Annotated
         raise HTTPException(status_code=500, detail=str(e))
     #Following code should update the image for an item
 
-@app.patch("/updateClothingArticleImage/{clothingArticleID}")
-async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
-    
-    check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
-
-    try:
-        drobeDatabaseCursor.execute(check_ID, (clothingArticleID,))
-        exists = drobeDatabaseCursor.fetchone()
-
-        if not exists:
-            return{"Article not Found"}
-        
-        insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
-        drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
-
-        drobeDatabaseConnection.commit()
-
-        return {"Image updated successfully"}
-    
-    except mysql.connector.Error as err:
-        raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/createOutfit/", status_code=201)
 async def createOutfit(outfit: Outfit):
