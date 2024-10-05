@@ -275,7 +275,32 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    #Following code should update the image for an item
+
+@app.patch("/updateClothingArticleImage/{clothingArticleID}")
+async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
     
+    check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
+
+    try:
+        drobeDatabaseCursor.execute(check_ID, (clothingArticleID,))
+        exists = drobeDatabaseCursor.fetchone()
+
+        if not exists:
+            return{"Article not Found"}
+        
+        insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
+        drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
+
+        drobeDatabaseConnection.commit()
+
+        return {"Image updated successfully"}
+    
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.post("/createOutfit/", status_code=201)
 async def createOutfit(outfit: Outfit):
     try:
