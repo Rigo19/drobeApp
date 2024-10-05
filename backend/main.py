@@ -199,7 +199,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
 #Following would return the image/images for a single article of clothing
 @app.get("/get_images_for_clothing_article/{clothingArticleID}")
 async def get_images_for_clothing_article(clothingArticleID: int):
-    retrieve_images_query = "SELECT * FROM ArticlesToImage WHERE clothingArticleID = %s"
+    retrieve_images_query = "SELECT Image FROM ArticlesToImage WHERE clothingArticleID = %s"
     
     drobeDatabaseCursor.execute(retrieve_images_query, (clothingArticleID,))
     images = drobeDatabaseCursor.fetchall()
@@ -239,8 +239,8 @@ async def get_all_clothing_articles():
 #Following code should update item type and name
 
 class clothingArticleUpdate(BaseModel):
-    clothingType: Optional[str]
-    clothingArticleName: Optional[str]
+    clothingType: Optional[str] = None
+    clothingArticleName: Optional[str] = None
 
 @app.patch("/changeClothingArticleData/{clothingArticleId}")
 async def change_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):
@@ -261,11 +261,11 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     if not update_fields:
         raise HTTPException(status_code = 400, detail ="No data provided to update")
     
-    update_query += ", ".join(update_fields + " WHERE clothingArticleID = %s")
+    update_query += ", ".join(update_fields) + " WHERE clothingArticleID = %s"
     update_values.append(clothingArticleId)
 
     try:
-        drobeDatabaseCursor.execute(update_query, update_values)
+        drobeDatabaseCursor.execute(update_query, tuple(update_values))
         drobeDatabaseConnection.commit()
 
         if drobeDatabaseCursor.rowcount == 0:
@@ -275,6 +275,32 @@ async def change_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    
+#Following code should update the image for an item
+
+@app.patch("/updateClothingArticleImage/{clothingArticleID}")
+async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
+    
+    check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
+
+    try:
+        drobeDatabaseCursor.execute(check_ID, (clothingArticleID,))
+        exists = drobeDatabaseCursor.fetchone()
+
+        if not exists:
+            return{"Article not Found"}
+        
+        insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
+        drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
+
+        drobeDatabaseConnection.commit()
+
+        return {"Image updated successfully"}
+    
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     #Following code should update the image for an item
 
 @app.patch("/updateClothingArticleImage/{clothingArticleID}")

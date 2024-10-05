@@ -90,6 +90,47 @@ titles that will each send you to the disired location-->
         </div>
     </section>
 
+    <!--Adding a "add clothing button"-->
+    <button class="add-button" data-bs-toggle="modal" data-bs-target="#addClothingModal">+</button>
+
+     <!-- Modal -->
+     <div class="modal fade" id="addClothingModal" tabindex="-1" aria-labelledby="addClothingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addClothingModalLabel">Add Clothing Article</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label>Clothing Article Name:</label>
+                        <input id="articleName" type="text" class="form-control">
+                    </div>
+                    
+                    <div>
+                        <label>Clothing Article Type:</label>
+                        <input id="articleType" type="text" class="form-control">
+                    </div>
+
+                    <div>
+                        <label>Clothing Type ID:</label>
+                        <input id='clothingTypeID' type="text" class="form-control">
+                    </div>
+
+                    <div>
+                        <label>User ID: </label>
+                        <input id="userID" type="text" class="form-control">
+                    </div>
+                    <br>
+                    <input id="fileSelection" type="file" class="form-control" />
+                    <button id="submitButton" type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<script src="addClothingAPICallFunctions.js" ></script>
 
 </html>
