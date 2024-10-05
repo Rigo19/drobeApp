@@ -4,6 +4,7 @@
 .env
 backend/.venv
 
+backend/__pycache__
 
 
 # These are some examples of commonly ignored file patterns.

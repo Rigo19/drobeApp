@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from .main import app
+from .api.main import app
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from os.path import dirname, abspath
