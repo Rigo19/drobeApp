@@ -166,8 +166,10 @@ on
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
     display: flex; /* Flexbox for horizontal alignment */
-    justify-content: center; /* Centering items horizontally */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center; /* Centering items horizontally */
     gap: 20px; /* Space between items */
+    align-items: center;
     flex-wrap: wrap; /* allow wrapping to the next row */
 }
 
@@ -179,6 +181,7 @@ on
 
 .clothes-item img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
 }
 
