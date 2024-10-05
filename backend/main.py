@@ -31,7 +31,6 @@ drobeDatabaseConnection = mysql.connector.connect(
     user = databaseUser,
     password= databasePassword,
     database = 'drobeApp'
-
 )
 
 
