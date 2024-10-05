@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from fastapi import APIRouter
 
 # Queries Section
 createArticleOfClothing_SQL_Query = ("INSERT INTO ArticlesOfClothing "
@@ -25,7 +25,10 @@ class clothingArticle(BaseModel):
     userID: int
 
 
-@app.post("/createArticleOfClothing/", status_code=201)
+router = APIRouter()
+
+
+@router.post("/createArticleOfClothing/", status_code=201)
 async def createArticleOfClothing(clothingArticle: clothingArticle):
     #line below creates the timestamp that will be stored in database
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -59,7 +62,7 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
 # FastAPI documentation for dealing with files is a good reference:
 # https://fastapi.tiangolo.com/tutorial/request-files/
 
-@app.post("/createArticleOfClothingImage/{userID}" ,status_code=201)
+@router.post("/createArticleOfClothingImage/{userID}" ,status_code=201)
 async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: int, response: Response):
     
     # It may seem strange but mysql requires a tuple to be used for the values when executing
@@ -111,7 +114,7 @@ class Outfit(BaseModel):
     clothingArticles: list[int]  # List of clothing article IDs
 
 
-@app.post("/createOutfit/", status_code=201)
+@router.post("/createOutfit/", status_code=201)
 async def createOutfit(outfit: Outfit):
     try:
         # Insert the new outfit into the database

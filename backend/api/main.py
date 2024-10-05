@@ -11,7 +11,9 @@ import mysql.connector
 from datetime import datetime
 import sys
 from mysql.connector import errors
+from fastapi import APIRouter
 
+from .routers import creation, deletion, modification, retrieval
 
 load_dotenv()
 
@@ -36,6 +38,13 @@ origins = ['*']
 
 # the code below ensures that CORS errors don't occur during API calls
 app = FastAPI()
+
+app.include_router(creation.router)
+app.include_router(deletion.router)
+app.include_router(modification.router)
+app.include_router(retrieval.router)
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

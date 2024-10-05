@@ -1,9 +1,11 @@
 from pydantic import BaseModel
 
+router = APIRouter()
+from fastapi import APIRouter
 
 
 #Following code would return all clothing articles for a user.
-@app.get("/getAllClothingArticlesByUserID/{userID}")
+@router.get("/getAllClothingArticlesByUserID/{userID}")
 async def get_all_clothing_articles_by_userID(userID: int):
     retrieve_articles_by_userID_query = "SELECT * FROM ArticlesOfClothing WHERE userID = %s"
     
@@ -28,7 +30,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
     return {"message": result}
 
 #Following would return the image/images for a single article of clothing
-@app.get("/get_images_for_clothing_article/{clothingArticleID}")
+@router.get("/get_images_for_clothing_article/{clothingArticleID}")
 async def get_images_for_clothing_article(clothingArticleID: int):
     retrieve_images_query = "SELECT Image FROM ArticlesToImage WHERE clothingArticleID = %s"
     
@@ -43,7 +45,7 @@ async def get_images_for_clothing_article(clothingArticleID: int):
     return Response(content = firstImage, media_type = "image")
 
 #Following code could be useful in testing frontend (Probably won't be used in final code)
-@app.get("/getAllClothingArticles/")
+@router.get("/getAllClothingArticles/")
 async def get_all_clothing_articles():
     retrieve_all_articles_query = "SELECT * FROM ArticlesOfClothing"
     

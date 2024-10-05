@@ -1,13 +1,14 @@
 from pydantic import BaseModel
-
+from fastapi import APIRouter
 
 
 delete_clothing_article_query = "DELETE FROM ArticlesOfClothing WHERE clothingArticleID = %s"
 deleteArticleIDBecauseDatabaseException_Query = ("DELETE from ArticlesOfClothing where clothingArticleID = %s ")
 
 
+router = APIRouter()
 
-@app.delete("/deleteClothingArticle/{clothingArticleID}", status_code=200)
+@router.delete("/deleteClothingArticle/{clothingArticleID}", status_code=200)
 async def delete_clothing_article(clothingArticleID: int):
 
     try:

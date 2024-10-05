@@ -1,8 +1,8 @@
 from pydantic import BaseModel
+from fastapi import APIRouter
 
 
-
-
+router = APIRouter()
 
 #Following code should update item type and name
 
@@ -10,7 +10,7 @@ class clothingArticleUpdate(BaseModel):
     clothingType: Optional[str] = None
     clothingArticleName: Optional[str] = None
 
-@app.patch("/updateClothingArticleData/{clothingArticleId}")
+@router.patch("/updateClothingArticleData/{clothingArticleId}")
 async def update_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):
 
     update_query = "UPDATE ArticlesOfClothing SET "
@@ -46,7 +46,7 @@ async def update_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
 #Following code should update the image for an item
 
-@app.patch("/updateClothingArticleImage/{clothingArticleID}")
+@router.patch("/updateClothingArticleImage/{clothingArticleID}")
 async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
     
     check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
