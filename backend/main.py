@@ -67,6 +67,19 @@ selectingArticleID_Query = ("select clothingArticleID from ArticlesOfClothing wh
 insertImage_Query = ("insert into ArticlesToImage values (%s, %s)")
 deleteArticleIDBecauseDatabaseException_Query = ("DELETE from ArticlesOfClothing where clothingArticleID = %s ")
 
+class Outfit(BaseModel):
+    userID: int
+    outfitName: str
+    clothingArticles: list[int]  # List of clothing article IDs
+
+# SQL queries
+createOutfit_SQL_Query = (
+    "INSERT INTO Outfits (userID, outfitName) VALUES (%s, %s)"
+)
+
+insertOutfitItems_SQL_Query = (
+    "INSERT INTO OutfitItems (outfitID, clothingArticleID) VALUES (%s, %s)"
+)
 
 @app.get("/")
 async def root():
@@ -288,3 +301,49 @@ async def update_clothing_article_image(clothingArticleID: int, image: Annotated
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    #Following code should update the image for an item
+
+@app.patch("/updateClothingArticleImage/{clothingArticleID}")
+async def update_clothing_article_image(clothingArticleID: int, image: Annotated[bytes,File(...)]):
+    
+    check_ID = "SELECT 1 FROM ArticlesOfClothing WHERE clothingArticleID = %s"
+
+    try:
+        drobeDatabaseCursor.execute(check_ID, (clothingArticleID,))
+        exists = drobeDatabaseCursor.fetchone()
+
+        if not exists:
+            return{"Article not Found"}
+        
+        insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
+        drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
+
+        drobeDatabaseConnection.commit()
+
+        return {"Image updated successfully"}
+    
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/createOutfit/", status_code=201)
+async def createOutfit(outfit: Outfit):
+    try:
+        # Insert the new outfit into the database
+        drobeDatabaseCursor.execute(createOutfit_SQL_Query, (outfit.userID, outfit.outfitName))
+        drobeDatabaseConnection.commit()
+
+        # Get the ID of the newly created outfit
+        outfitID = drobeDatabaseCursor.lastrowid
+
+        # If there are clothing articles, link them to the new outfit
+        if outfit.clothingArticles:
+            for clothingID in outfit.clothingArticles:
+                drobeDatabaseCursor.execute(insertOutfitItems_SQL_Query, (outfitID, clothingID))
+            drobeDatabaseConnection.commit()
+
+    except mysql.connector.Error as e:
+        raise HTTPException(status_code=500, detail="Failed to create outfit: " + str(e))
+
+    return {"message": "Outfit created successfully", "outfitID": outfitID}

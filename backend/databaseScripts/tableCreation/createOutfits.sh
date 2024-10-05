@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo mysql -u root -p -e "use drobeApp;
-    create table if not exists OutfitsByUser
+    create table if not exists Outfits
     ( 
     outfitID INT AUTO_INCREMENT NOT NULL,
     outfitName VARCHAR(100) NOT NULL,
@@ -13,4 +13,4 @@ sudo mysql -u root -p -e "use drobeApp;
 
 
 # below are the columuns featured in this DB table
-#outfitID	outfitName	userID	timeCreated	timeLastModified
+#outfitID    outfitName    userID    timeCreated    timeLastModified
