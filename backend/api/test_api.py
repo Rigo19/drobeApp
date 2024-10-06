@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from .api.main import app
+from .main import app
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from os.path import dirname, abspath
@@ -45,7 +45,7 @@ def test_create_ClothingArticleBadExample2():
 
 def test_create_ClothingArticleImageGoodExample1():
     # first part of function below gets the absolute path to the directory above this current file
-    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    path = dirname(dirname(dirname(abspath(__file__)))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
     with open(path, "rb") as image:
         f = image.read()
         byteImage = bytes(f)
@@ -56,7 +56,7 @@ def test_create_ClothingArticleImageGoodExample1():
 # intentionally misspelling image as imag
 def test_create_ClothingArticleImageBadExample1():
     # first part of function below gets the absolute path to the directory above this current file
-    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    path = dirname(dirname(dirname(abspath(__file__)))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
     with open(path, "rb") as image:
         f = image.read()
         byteImage = bytes(f)
@@ -67,7 +67,7 @@ def test_create_ClothingArticleImageBadExample1():
 # missing the field name of 'image' in front of the image for the request
 def test_create_ClothingArticleImageBadExample2():
     # first part of function below gets the absolute path to the directory above this current file
-    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    path = dirname(dirname(dirname(abspath(__file__)))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
     with open(path, "rb") as image:
         f = image.read()
         byteImage = bytes(f)
@@ -80,8 +80,8 @@ def test_get_AllClothingArticlesByUserIDGoodExample1():
     response = client.get("/getAllClothingArticlesByUserID/0")
     
     assert response.status_code == 200
-    assert "All Clothing Articles: " in response.json()
-    assert len(response.json()["All Clothing Articles: "]) > 0
+    assert "message" in response.json()
+    assert len(response.json()["message"]) > 0
 
 def test_get_AllClothingArticlesByUserIDGoodExample2():
     response = client.get("/getAllClothingArticlesByUserID/100000")
@@ -103,7 +103,7 @@ def test_get_ClothingArticleImageBadExample1():
     assert response.status_code == 404
 
 def test_changeClothingArticleDataBadExample1():
-    response = client.patch("/changeClothingArticleData/1900" ,
+    response = client.patch("/updateClothingArticleData/1900" ,
                             json={"clothingType":"jacket", "clothingArticleName": "Northface"})
 
     assert response.status_code == 404
@@ -111,7 +111,7 @@ def test_changeClothingArticleDataBadExample1():
 
 # forgetting articleID in the endpoint
 def test_changeClothingArticleDataBadExample2():
-    response = client.patch("/changeClothingArticleData/" ,
+    response = client.patch("/updateClothingArticleData/" ,
                             json={"clothingType":"jacket", "clothingArticleName": "Northface"})
 
     assert response.status_code == 404
@@ -125,7 +125,7 @@ def test_changeClothingArticleImageBadExample1():
     assert response.json()["detail"] == "Not Found"
 
 def test_changeClothingArticleImageBadExample2():
-    path = dirname(dirname(abspath(__file__))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
+    path = dirname((dirname(dirname(abspath(__file__))))) + "/images/sampleClothes/tshirts/tshirt1.jpg"
     with open(path, "rb") as image:
         f = image.read()
         byteImage = bytes(f)
@@ -133,7 +133,7 @@ def test_changeClothingArticleImageBadExample2():
 
     assert response.status_code == 200
     
-
+#/Users/blakejameson/Desktop/School-Semesters/Fall-2024/CS3398-SWE/class-projects/drobeapp/images/sampleClothes/tshirts/tshirt1.jpg
 
 
 
