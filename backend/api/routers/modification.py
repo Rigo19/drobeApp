@@ -1,14 +1,21 @@
 from pydantic import BaseModel
 from fastapi import APIRouter
+import mysql.connector
+from typing import Annotated, Optional
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+import api.config.databaseconfig
+
+
+drobeDatabaseConnection, drobeDatabaseCursor = api.config.databaseconfig.get_connection()
 
 
 router = APIRouter()
 
 #Following code should update item type and name
-
 class clothingArticleUpdate(BaseModel):
     clothingType: Optional[str] = None
     clothingArticleName: Optional[str] = None
+    
 
 @router.patch("/updateClothingArticleData/{clothingArticleId}")
 async def update_clothing_article_data(clothingArticleId: int, clothingArticle: clothingArticleUpdate):

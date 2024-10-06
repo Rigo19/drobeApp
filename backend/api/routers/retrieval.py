@@ -1,7 +1,14 @@
 from pydantic import BaseModel
+import mysql.connector
+from fastapi import APIRouter
+from typing import Annotated, Optional
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+import api.config.databaseconfig
+
+
+drobeDatabaseConnection, drobeDatabaseCursor = api.config.databaseconfig.get_connection()
 
 router = APIRouter()
-from fastapi import APIRouter
 
 
 #Following code would return all clothing articles for a user.

@@ -12,7 +12,6 @@ from datetime import datetime
 import sys
 from mysql.connector import errors
 from fastapi import APIRouter
-
 from .routers import creation, deletion, modification, retrieval
 
 load_dotenv()
@@ -22,17 +21,11 @@ databaseUser = os.getenv('user')
 databasePassword = os.getenv('password')
 
 
-drobeDatabaseConnection = mysql.connector.connect(
-    host = databaseHost,
-    user = databaseUser,
-    password= databasePassword,
-    database = 'drobeApp'
-)
+
 
 
 # the cursor defined below is what you will 
 # use to run queries with the database
-drobeDatabaseCursor = drobeDatabaseConnection.cursor()
 
 origins = ['*']
 

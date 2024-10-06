@@ -1,5 +1,13 @@
 from pydantic import BaseModel
 from fastapi import APIRouter
+from datetime import datetime
+import mysql.connector
+from typing import Annotated, Optional
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+import api.config.databaseconfig
+
+drobeDatabaseConnection, drobeDatabaseCursor = api.config.databaseconfig.get_connection()
+
 
 # Queries Section
 createArticleOfClothing_SQL_Query = ("INSERT INTO ArticlesOfClothing "
@@ -13,7 +21,7 @@ insertImage_Query = ("insert into ArticlesToImage values (%s, %s)")
 insertOutfitItems_SQL_Query = (
     "INSERT INTO OutfitItems (outfitID, clothingArticleID) VALUES (%s, %s)"
 )
-
+deleteArticleIDBecauseDatabaseException_Query = ("DELETE from ArticlesOfClothing where clothingArticleID = %s ")
 
 
 # this clothingArticle model below represents the fields that 
@@ -101,8 +109,6 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
         return {"message":"Clothing Article was deleted from DB due to error in saving the image!"}
 
     return {"message":"Succesful Image Upload"}
-
-
     ## **NOTE**
     ## The "/createArticleOfClothingImage/{userID}" and "/createArticleOfClothing/" will 
     # each have to be called by the front end code at the same time "
@@ -112,7 +118,6 @@ class Outfit(BaseModel):
     userID: int
     outfitName: str
     clothingArticles: list[int]  # List of clothing article IDs
-
 
 @router.post("/createOutfit/", status_code=201)
 async def createOutfit(outfit: Outfit):

@@ -1,10 +1,16 @@
 from pydantic import BaseModel
 from fastapi import APIRouter
+import mysql.connector
+from typing import Annotated, Optional
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+import api.config.databaseconfig
+
+
+drobeDatabaseConnection, drobeDatabaseCursor = api.config.databaseconfig.get_connection()
 
 
 delete_clothing_article_query = "DELETE FROM ArticlesOfClothing WHERE clothingArticleID = %s"
 deleteArticleIDBecauseDatabaseException_Query = ("DELETE from ArticlesOfClothing where clothingArticleID = %s ")
-
 
 router = APIRouter()
 
