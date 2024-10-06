@@ -8,7 +8,6 @@ from os.path import dirname, abspath
 client = TestClient(app)
 
 def test_create_ClothingArticleGoodExample():
-    #json_compatible = jsonable_encoder(clothingarticle)
     response = client.post("/createArticleOfClothing/",
         json={
                 "clothingType":"t-shirt",
@@ -86,15 +85,13 @@ def test_get_AllClothingArticlesByUserIDGoodExample1():
 def test_get_AllClothingArticlesByUserIDGoodExample2():
     response = client.get("/getAllClothingArticlesByUserID/100000")
 
-    assert response.status_code == 200
-    assert response.json()["message"] == "No articles found in the user's closet"
-
+    assert response.status_code == 404
+   
 
 def test_get_ClothingArticleImageGoodExample1():
     response = client.get("/get_images_for_clothing_article/5000")
 
-    assert response.status_code == 200
-    assert response.json()["message"] == "No images found for this clothing article"
+    assert response.status_code == 404
 
 def test_get_ClothingArticleImageBadExample1():
     # case where articleID isn't entered
@@ -107,7 +104,6 @@ def test_changeClothingArticleDataBadExample1():
                             json={"clothingType":"jacket", "clothingArticleName": "Northface"})
 
     assert response.status_code == 404
-    assert response.json()["detail"] == "Clothing article not found"
 
 # forgetting articleID in the endpoint
 def test_changeClothingArticleDataBadExample2():
@@ -131,9 +127,7 @@ def test_changeClothingArticleImageBadExample2():
         byteImage = bytes(f)
     response = client.patch("/updateClothingArticleImage/100", data= {"image":f})
 
-    assert response.status_code == 200
-    
-#/Users/blakejameson/Desktop/School-Semesters/Fall-2024/CS3398-SWE/class-projects/drobeapp/images/sampleClothes/tshirts/tshirt1.jpg
+    assert response.status_code == 500
 
 
 

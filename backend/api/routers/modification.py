@@ -50,8 +50,6 @@ async def update_clothing_article_data(clothingArticleId: int, clothingArticle: 
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
     
 #Following code should update the image for an item
 
