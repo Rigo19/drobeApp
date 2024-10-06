@@ -165,12 +165,12 @@ on
 
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
-    display: flex; /* Flexbox for horizontal alignment */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    justify-items: center; /* Centering items horizontally */
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);/* 3 items per row */
     gap: 20px; /* Space between items */
+    justify-items: center; /* Centering items horizontally */
     align-items: center;
-    flex-wrap: wrap; /* allow wrapping to the next row */
+    margin: 20px auto; /* center the grid horizontally*/
 }
 
 /* want a total of 3 itmes per row */
