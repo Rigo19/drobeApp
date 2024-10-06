@@ -20,7 +20,7 @@ async def get_all_clothing_articles_by_userID(userID: int):
     articles = drobeDatabaseCursor.fetchall()
 
     if not articles:
-        return {"message": "No articles found in the user's closet"}
+        raise HTTPException(status_code=404, detail="Clothing article not found")
     
     result = []
     for article in articles:
@@ -45,7 +45,7 @@ async def get_images_for_clothing_article(clothingArticleID: int):
     images = drobeDatabaseCursor.fetchall()
 
     if not images:
-        return {"message": "No images found for this clothing article"}
+        raise HTTPException(status_code=404, detail="Clothing article not found")
     
     firstImage = images[0][0]
 
@@ -60,7 +60,7 @@ async def get_all_clothing_articles():
     articles = drobeDatabaseCursor.fetchall()
 
     if not articles:
-        return {"message": "No articles found in closet"}
+        raise HTTPException(status_code=404, detail="Clothing article not found")
     
     result = []
     for article in articles:

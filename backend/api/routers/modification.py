@@ -46,10 +46,12 @@ async def update_clothing_article_data(clothingArticleId: int, clothingArticle: 
         if drobeDatabaseCursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Clothing article not found")
         
-        return {"Clothing article data updated successfully"}
+        return {"message": "Clothing article data updated successfully"}
     
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     
 #Following code should update the image for an item
 
@@ -63,7 +65,7 @@ async def update_clothing_article_image(clothingArticleID: int, image: Annotated
         exists = drobeDatabaseCursor.fetchone()
 
         if not exists:
-            return{"message": "Article not Found"}
+            raise HTTPException(status_code=404, detail="Clothing article not found")
         
         insert_image_query = "UPDATE ArticlesToImage SET Image=%s WHERE clothingArticleID=%s"
         drobeDatabaseCursor.execute(insert_image_query, (image, clothingArticleID))
@@ -76,4 +78,3 @@ async def update_clothing_article_image(clothingArticleID: int, image: Annotated
         raise HTTPException(status_code=500, detail=f"Database error: {str(err)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    #Following code should update the image for an item

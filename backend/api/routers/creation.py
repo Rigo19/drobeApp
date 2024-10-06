@@ -89,7 +89,6 @@ async def createArticleOfClothingImage(image: Annotated[bytes,File ()], userID: 
 
     try:
         drobeDatabaseCursor.execute(insertImage_Query, dataForQuery)
-
         drobeDatabaseConnection.commit()
 
     except mysql.connector.errors.IntegrityError:
