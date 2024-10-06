@@ -56,7 +56,7 @@ async function getAllArticlesOfClothing(){
     headers: {"Content-Type": "application/json"}
    });
 
-   const data = await response.json().then(obj => obj["All Clothing Articles: "]);
+   const data = await response.json().then(obj => obj["message"]);
    console.log(data);
 
    var array_length = data.length;
