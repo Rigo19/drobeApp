@@ -28,3 +28,13 @@ def get_connection():
     return drobeDatabaseConnection, drobeDatabaseCursor
 
 
+databaseConfig = {
+    "database": "drobeApp",
+    "user": databaseUser,
+    "host": databaseHost,
+    "password": databasePassword
+}
+
+connectionPool = mysql.connector.pooling.MySQLConnectionPool(pool_name = "sqlPool",
+                                                             pool_size= 4,
+                                                             **databaseConfig)

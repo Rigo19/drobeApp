@@ -4,9 +4,18 @@ from fastapi import APIRouter
 from typing import Annotated, Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException, Response
 import api.config.databaseconfig
+from mysql.connector.pooling import connect
+from api.config.databaseconfig import connectionPool
+from dotenv import load_dotenv
+import os
 
-
-drobeDatabaseConnection, drobeDatabaseCursor = api.config.databaseconfig.get_connection()
+# DB setup
+load_dotenv()
+databaseHost = os.getenv('host')
+databaseUser = os.getenv('user')
+databasePassword = os.getenv('password')
+drobeDatabaseConnection = mysql.connector.connect(host = databaseHost, user = databaseUser,password= databasePassword, database = 'drobeApp')
+drobeDatabaseCursor = drobeDatabaseConnection.cursor()
 
 router = APIRouter()
 
