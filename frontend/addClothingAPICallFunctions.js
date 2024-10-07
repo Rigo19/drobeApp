@@ -10,7 +10,7 @@ getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 articles = [];
 const clothingTypetoTypeIDMap = new Map([
   ['t-shirt',0],
-  ['polo',1],
+  ['polo shirt',1],
   ['long-sleeved',2],
   ['dress shirt',3],
   ['shorts', 4],
@@ -135,8 +135,9 @@ async function displayArticlesOfClothing(){
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
 document.getElementById("submitButton").addEventListener("click", async (event) => {
+
     
-    clothingType = document.getElementById('articleType').value;
+    clothingType = document.getElementById('clothingtype').value;
     console.log(clothingType);
 
     clothingTypeID = clothingTypetoTypeIDMap.get(clothingType);
