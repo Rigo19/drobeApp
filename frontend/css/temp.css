@@ -175,14 +175,21 @@ on
 
 /* want a total of 3 itmes per row */
 .clothes-item {
-    width: calc(33.333% - 20px);
+    /*width: calc(33.333% - 20px);*/
+    width: 100%;
     text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .clothes-item img {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    object-fit: cover;
+    max-height: 200px;
 }
 
 .clothes-item p {
