@@ -8,6 +8,27 @@ getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
 //global array holding object values(clothing)
 articles = [];
+const clothingTypetoTypeIDMap = new Map([
+  ['t-shirt',0],
+  ['polo shirt',1],
+  ['long-sleeved',2],
+  ['dress shirt',3],
+  ['shorts', 4],
+  ['jeans', 5],
+  ['pants', 6],
+  ['sweater', 7],
+  ['jacket', 8],
+  ['hoodie', 9],
+  ['cap', 10],
+  ['hat', 11],
+  ['shoes', 12],
+  ['sunglasses', 13],
+  ['dress', 14],
+  ['skirt', 15],
+  ['watch', 16],
+  ['sandals', 17]
+])
+
 
 // Prevent default form submission and handle the button click
 document.getElementById("submitButton").addEventListener('submit', (event) =>{
@@ -114,17 +135,18 @@ async function displayArticlesOfClothing(){
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
 document.getElementById("submitButton").addEventListener("click", async (event) => {
+
     
-    clothingType = document.getElementById('articleType').value;
+    clothingType = document.getElementById('clothingtype').value;
     console.log(clothingType);
 
-    clothingTypeID = document.getElementById('clothingTypeID').value;
+    clothingTypeID = clothingTypetoTypeIDMap.get(clothingType);
     console.log(clothingTypeID);
 
     clothingArticleName = document.getElementById('articleName').value;
     console.log(clothingArticleName);
 
-    userID = document.getElementById('userID').value;
+    userID = localStorage.getItem("userID")
     console.log(userID);
 
     await createArticleOfClothing(clothingType, clothingTypeID, clothingArticleName, userID);
@@ -137,6 +159,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
 });
 
 async function main() {
+  localStorage.setItem("userID", 0);
   await getAllArticlesOfClothing();
   console.log(articles);
   await displayArticlesOfClothing();
