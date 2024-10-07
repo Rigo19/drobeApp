@@ -166,7 +166,7 @@ on
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
     display: grid; 
-    grid-template-columns: repeat(3, 1fr);/* 3 items per row */
+    grid-template-columns: repeat(4, 1fr);/* 3 items per row */
     gap: 20px; /* Space between items */
     justify-items: center; /* Centering items horizontally */
     align-items: center;
@@ -175,7 +175,6 @@ on
 
 /* want a total of 3 itmes per row */
 .clothes-item {
-    /*width: calc(33.333% - 20px);*/
     width: 100%;
     text-align: center;
     background-color: #f9f9f9;
@@ -185,11 +184,10 @@ on
 }
 
 .clothes-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 80%;
+    border-radius: 4px;
+    height: 20vw;
     object-fit: cover;
-    max-height: 200px;
 }
 
 .clothes-item p {
