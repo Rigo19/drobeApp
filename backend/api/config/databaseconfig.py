@@ -27,6 +27,7 @@ def get_connection():
     
     return drobeDatabaseConnection, drobeDatabaseCursor
 
+drobeDatabaseConnection, drobeDatabaseCursor = get_connection()
 
 databaseConfig = {
     "database": "drobeApp",
@@ -35,6 +36,6 @@ databaseConfig = {
     "password": databasePassword
 }
 
-connectionPool = mysql.connector.pooling.MySQLConnectionPool(pool_name = "sqlPool",
-                                                             pool_size= 4,
-                                                             **databaseConfig)
+#connectionPool = mysql.connector.pooling.MySQLConnectionPool(pool_name = "sqlPool",
+                                                            # pool_size= 4,
+                                                             #**databaseConfig)
