@@ -5,16 +5,12 @@ from typing import Annotated, Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException, Response
 from dotenv import load_dotenv
 import os
+from api.config.databaseconfig import drobeDatabaseConnection, drobeDatabaseCursor
+while drobeDatabaseConnection == None or drobeDatabaseCursor == None:
+    print("waiting")
+    from api.config.databaseconfig import drobeDatabaseConnection, drobeDatabaseCursor
 
-
-# DB setup
-load_dotenv()
-databaseHost = os.getenv('host')
-databaseUser = os.getenv('user')
-databasePassword = os.getenv('password')
-drobeDatabaseConnection = mysql.connector.connect(host = databaseHost, user = databaseUser,password= databasePassword, database = 'drobeApp')
-drobeDatabaseCursor = drobeDatabaseConnection.cursor()
-
+    
 
 delete_clothing_article_query = "DELETE FROM ArticlesOfClothing WHERE clothingArticleID = %s"
 deleteArticleIDBecauseDatabaseException_Query = ("DELETE from ArticlesOfClothing where clothingArticleID = %s ")
