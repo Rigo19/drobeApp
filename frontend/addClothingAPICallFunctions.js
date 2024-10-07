@@ -1,3 +1,5 @@
+const res = require("express/lib/response");
+
 //url for api endpoints used for uploading an image of clothing article 
 imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
 //url for api endpoints used for creating an articles of clothing in the database for the user
@@ -28,6 +30,25 @@ const clothingTypetoTypeIDMap = new Map([
   ['watch', 16],
   ['sandals', 17]
 ])
+
+/*All
+Tops
+Bottoms
+Shoes
+Accessories*/
+
+const broadCategoryAndTypes = new Map([
+  ['tops', [0,1,2,3,7,8,9]],
+  ['bottoms',[4,5,6]],
+  ['shoes', [12, 17]],
+  ['accesories', [10, 11, 13, 16]]
+])
+
+function printArrayOfType(categoryType){
+  return broadCategoryAndTypes.get(categoryType)
+}
+
+//function printSelectedCategoryClothes
 
 
 // Prevent default form submission and handle the button click
@@ -163,6 +184,12 @@ async function main() {
   await getAllArticlesOfClothing();
   console.log(articles);
   await displayArticlesOfClothing();
+  console.log(broadCategoryAndTypes)
+  result = printArrayOfType('tops');
+  console.log(result)
+
+ 
+  
 }
 
 main();
