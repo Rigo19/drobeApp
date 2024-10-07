@@ -1,6 +1,7 @@
 var getUserClothingArticles_URL = "http://127.0.0.1:8000/getAllClothingArticlesByUserID/"
 var getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
+// an array that holds data about each of the user's clothing article in the browser
 var articles = []
 
 //get(fetcht) all the clothing pieces from the database of the specific user
@@ -47,9 +48,11 @@ async function main(){
         var clothingArticleName = currentElement.clothingArticleName;
         var currentImageFile = await getImageFile(clothingArticleID)
         
+        // the biggest Div for each article on page
         var mainArticleDiv = document.createElement('div');
         mainArticleDiv.className = 'col-md-4';
 
+        // the div inside the main article div
         var firstInnerArticleDiv = document.createElement('div')
         firstInnerArticleDiv.className = 'card mb-4 shadow-sm';
 
@@ -58,20 +61,27 @@ async function main(){
         var imageElementSrc = URL.createObjectURL(currentImageFile);
 
         imageElement.src = imageElementSrc;
+        // adding image to the first inner div
         firstInnerArticleDiv.append(imageElement);
 
-
+        // div nested the deepest
         var mostInnerArticleDiv = document.createElement('div')
         mostInnerArticleDiv.className = 'card-body text-center';
         
+        // h5 element that shows article name
         var card = document.createElement('h5');
         card.innerText = clothingArticleName;
 
+        // adding h5 to inner div
         mostInnerArticleDiv.append(card);
 
+        // adding the inner div to the div thats bigger
         firstInnerArticleDiv.append(mostInnerArticleDiv);
 
+        // adding first inner div to the main article div
         mainArticleDiv.append(firstInnerArticleDiv);
+
+        // adding the div (whole article) to div that represents this ection
         mainClosetDiv.append(mainArticleDiv);
 
     }   
