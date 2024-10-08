@@ -165,10 +165,10 @@ on
 
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
-    grid-template-columns: repeat(4, 1fr);/* 3 items per row */
     display: grid; 
-    justify-items: center; /* Centering items horizontally */
+    grid-template-columns: repeat(4, 1fr);/* 3 items per row */
     gap: 20px; /* Space between items */
+    justify-items: center; /* Centering items horizontally */
     align-items: center;
     margin: 20px auto; /* center the grid horizontally*/
 }
@@ -177,6 +177,10 @@ on
 .clothes-item {
     width: 100%;
     text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .clothes-item img {
