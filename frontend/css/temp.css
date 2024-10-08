@@ -165,8 +165,8 @@ on
 
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
-    display: grid; /* Flexbox for horizontal alignment */
     grid-template-columns: repeat(4, 1fr);/* 3 items per row */
+    display: grid; 
     justify-items: center; /* Centering items horizontally */
     gap: 20px; /* Space between items */
     align-items: center;
