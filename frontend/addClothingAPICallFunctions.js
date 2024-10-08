@@ -16,6 +16,17 @@ var copyOfAllArticles = [];
 var selectedArticles = [];
 
 
+let categoryButtonElements = [];
+
+// map that has 1 for category button if it is selected, 0 if it isnt
+var categoryButtonSelectedMap = new Map([
+  ['all',1],
+  ['tops',0],
+  ['bottoms',0],
+  ['shoes', 0],
+  ['accessories', 0]
+  ])
+
 var articleIDToBlobFiles = new Map();
 
 const clothingTypetoTypeIDMap = new Map([
@@ -55,6 +66,24 @@ const broadCategoryAndTypes = new Map([
 
 let ArticleIDToImageSrc = new Map();
 
+
+async function updateWhichButtonisClicked(buttonID){
+
+  for (let i = 0; i < categoryButtonElements.length; i++){
+    let button = categoryButtonElements[i];
+    
+    if (button.id == buttonID){
+      button.style.backgroundColor = '#e9ecef';
+      
+    }
+
+    else{
+      button.style.backgroundColor = "#f8f9fa";
+      //button.classList.add('category-button');
+    }
+  }
+}
+
 function returnArrayOfType(categoryType){
   return broadCategoryAndTypes.get(categoryType)
 }
@@ -62,12 +91,13 @@ function returnArrayOfType(categoryType){
 document.querySelectorAll(".category-button").forEach(btn => btn.addEventListener("click", async e => {
 
   buttonValue = btn.id;
-  console.log(buttonValue);
+
+  await updateWhichButtonisClicked(buttonValue);
 
   if (buttonValue == "all"){
     selectedArticles = articles;
     document.querySelectorAll('.clothes-item').forEach(e => e.remove());
-    await displayArticlesOfClothing();
+    await displayArticlesOfClothingAFTERFiltering();
     return;
   }
 
@@ -179,6 +209,8 @@ async function getAllArticlesOfClothing(){
     headers: {"Content-Type": "application/json"}
    });
 
+   categoryButtonElements = document.getElementsByClassName('category-button');
+
    const data = await response.json().then(obj => obj["message"]);
    console.log(data);
 
@@ -239,6 +271,19 @@ async function displayArticlesOfClothing(){
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // The line below allows for the createArticleImage function 
 // to be called when the submit button is clicked
 document.getElementById("submitButton").addEventListener("click", async (event) => {
@@ -260,6 +305,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
     await createArticleImage();
 
     const articles = await getAllArticlesOfClothing();
+
     //displayArticlesOfClothing(articles);
 
     window.location.reload();

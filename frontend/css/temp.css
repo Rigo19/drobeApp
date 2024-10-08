@@ -79,8 +79,8 @@ h1{
 .category-button{
     margin: 0 10px;
     padding: 10px 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
+    background-color: #f8f9fa !important;
+    border: 1px solid #ced4da !important;
     border-radius: 5px;
     cursor: pointer;
     color: #800000;
@@ -88,7 +88,7 @@ h1{
 }
 
 .category-button:hover{
-    background-color: #e9ecef;
+    background-color: #e9ecef !important;
 }
 
 .category-button-container{
