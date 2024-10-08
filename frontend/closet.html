@@ -16,16 +16,50 @@
     <!--right here we create a header where we will have different 
 titles that will each send you to the disired location-->
     <section id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Drobe</a>
+              <a class="active" href="closet.html">My Closet</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myoutfits.html">My Outfits</a>
+                </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="#" alt="Profile" class="rounded-circle" width="30" height="30">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+      <!--  
         <div>
             <ul id="navigation_bar">
                 <li><a class="active" href="closet.html">My Closet</a></li>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="myoufits.html">My Outfits</a></li>
+                <li><a href="myoutfits.html">My Outfits</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="profile.html">My Profile</a></li>
             </ul>
         </div>
+    -->
     </section>
 
     
@@ -35,60 +69,18 @@ titles that will each send you to the disired location-->
         <br>
         
         <div class="d-flex justify-content-center mb-4">
-            <div class="category-button">All</div>
-            <div class="category-button">Tops</div>
-            <div class="category-button">Bottoms</div>
-            <div class="category-button">Shoes</div>
-            <div class="category-button">Accessories</div>
+            <div class="category-button" id="all">All</div>
+            <div class="category-button" id="tops">Tops</div>
+            <div class="category-button" id="bottoms">Bottoms</div>
+            <div class="category-button" id="shoes">Shoes</div>
+            <div class="category-button" id="accesories">Accessories</div>
         </div>
 
         <!-- Clothes Grid-->
-        <div class="clothes-grid">
-            <!-- Sample clothis items will be blank for the moment -->
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 1">
-                <p>Item 1</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 2">
-                <p>Item 2</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 3">
-                <p>Item 3</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 4">
-                <p>Item 4</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 5">
-                <p>Item 5</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="clothes-item">
-                <img src=" " alt="Clothing Item 6">
-                <p>Item 6</p>
-                <div>
-                    <a href="#"></a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="clothes-grid" id="thegrid">
+            <!-- Clothing items are dynamically placed here -->
+        </section>
+    </div>
 
     <!--Adding a "add clothing button"-->
     <button class="add-button" data-bs-toggle="modal" data-bs-target="#addClothingModal">+</button>
@@ -104,23 +96,34 @@ titles that will each send you to the disired location-->
                 <div class="modal-body">
                     <div>
                         <label>Clothing Article Name:</label>
-                        <input id="articleName" type="text" class="form-control">
+                        <input id="articleName" type="text" class="form-control" autocomplete="off">
                     </div>
                     
                     <div>
                         <label>Clothing Article Type:</label>
-                        <input id="articleType" type="text" class="form-control">
+                        <select id="clothingtype" name="clothingtype" class="form-control">
+                            <option value="default">Please select an option</option>
+                            <option value="t-shirt">t-shirt</option>
+                            <option value="polo shirt">polo shirt</option>
+                            <option value="dress shirt">dress shirt</option>
+                            <option value="shorts">shorts</option>
+                            <option value="jeans">jeans</option>
+                            <option value="pants">pants</option>
+                            <option value="sweater">sweater</option>
+                            <option value="jacket">jacket</option>
+                            <option value="hoodie">hoodie</option>
+                            <option value="cap">cap</option>
+                            <option value="hat">hat</option>
+                            <option value="shoes">shoes</option>
+                            <option value="sunglasses">sunglasses</option>
+                            <option value="dress">dress</option>
+                            <option value="skirt">skirt</option>
+                            <option value="watch">watch</option>
+                            <option value="sandals">sandals</option>
+                        </select>
+                        
                     </div>
 
-                    <div>
-                        <label>Clothing Type ID:</label>
-                        <input id='clothingTypeID' type="text" class="form-control">
-                    </div>
-
-                    <div>
-                        <label>User ID: </label>
-                        <input id="userID" type="text" class="form-control">
-                    </div>
                     <br>
                     <input id="fileSelection" type="file" class="form-control" />
                     <button id="submitButton" type="submit" class="btn btn-primary">Send</button>
