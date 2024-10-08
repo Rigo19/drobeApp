@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+/*body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+} */
+
+.card {
+    background-color: #f9f9f9;
+}
+
+.card-body h4 {
+    color: #333;
+}
+
+.list-group-item {
+    background-color: #fdfdfd;
+    border: none;
+}
+
+.list-group-item strong {
+    color: #555;
+}
+
+img {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+  
+
+/*background-image: url("main/images/pinkBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    */
+
+/* Styles for the displayCloset section */
+#displayCloset {
+    padding: 40px; /* Add some padding around the section */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center-align text */
+    margin: 20px; /* Add margin around the section */
+    color: #800000;
+}
+
+/* Styles for section-p1 class*/
+.section-p1{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    margin-top: 20px;
+    padding: 20px;
+}
+
+
+h1{
+    color: #800000;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+
+.category-button{
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #800000;
+    transition: background-color 0.3s ease;
+}
+
+.category-button:hover{
+    background-color: #e9ecef !important;
+}
+
+.category-button-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* 
+Alligned the navigation to be presented in one row 
+rether then having them allined in a column
+web page
+*/
+#navigation_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* 
+This function we will remove the bullet 
+points out of our navigation links
+we will also add padding to have some spacing in between
+navivation links
+*/
+#navigation_bar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+/*
+This function we will remove the underlines 
+from our navigation links and add smooth changing
+transitions from one link to the other
+*/
+#navigation_bar li a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+/* 
+This function will add hover effects 
+to our navigation links
+while also highlighting which link page the user is
+on
+*/
+#navigation_bar li a:hover,
+#navigation_bar li a.active {
+    color: #800000;
+}
+
+/*  
+This function we add an underlining to whatever link page the user is
+on
+*/
+#navigation_bar li a.active::after,
+#navigation_bar li a:hover::after{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #800000;
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Horizontally aligning the Clothes Grid */
+.clothes-grid {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);/* 3 items per row */
+    gap: 20px; /* Space between items */
+    justify-items: center; /* Centering items horizontally */
+    align-items: center;
+    margin: 20px auto; /* center the grid horizontally*/
+}
+
+/* want a total of 3 itmes per row */
+.clothes-item {
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.clothes-item img {
+    width: 80%;
+    border-radius: 4px;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
+.clothes-item p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+/* customizing the "add clothing" button */
+.add-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d1a86f;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: -5px;
+}
+.search-bar {
+    display: flex;
+    height: 40px;
+    width: 250px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.outfits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Outfit Card Container*/
+.outfit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible grid with min width */
+    gap: 20px; /* Constant gap between cards */
+    padding: 20px;
+    box-sizing: border-box;
+    justify-items: center; /* Centering grid items */
+}
+
+.outfit-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Full width to fit in the grid */
+    max-width: 200px; /* Set a max width for cards */
+    height: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.outfit-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.outfit-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.outfit-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.outfit-details h3 {
+    margin: 0;
+    font-size: small;
+}
+
+.outfit-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.outfit-actions button {
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.outfit-actions button:hover {
+    background-color: #0056b3;
+}
+
+.favorite-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: #ccc; 
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorite-btn:hover,
+.favorite-btn:focus {
+    color: red;
+}
+
+.favorite-btn:active {
+    transform: scale(1.1);
+}
+
+.favorite-btn-header {
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-top: -5px;
+}
+
+.favorite-btn-header:hover,
+.favorite-btn-header:focus {
+    color: red;
+}
+
+.favorite-btn-header:active {
+    transform: scale(1.1);
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.filter-btn svg {
+    fill: #333;
+    transition: fill 0.3s ease;
+}
+
+.filter-btn:hover svg {
+    color: #007BFF;
+}
+
+.filter-btn:active {
+    transform: scale(1.1);
+}
+
+.filter-favorites-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.create-outfit-btn {
+    background-color: #DE3163;
+    color: white;
+    padding: 10px 20px;
+    height: 40px;
+    margin-top: -5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.create-outfit-btn:hover {
+    background-color: #ae2149;
+}
