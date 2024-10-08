@@ -3,7 +3,7 @@ imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
 //url for api endpoints used for creating an articles of clothing in the database for the user
 clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
 //url for api endpoints used for fetching all clothing articles 
-getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticles/";
+var getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticles/";
 getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
 
@@ -79,7 +79,7 @@ async function updateWhichButtonisClicked(buttonID){
 
     else{
       button.style.backgroundColor = "#f8f9fa";
-      //button.classList.add('category-button');
+      button.classList.add('category-button');
     }
   }
 }
