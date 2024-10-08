@@ -6,9 +6,13 @@ clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing
 getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticles/";
 getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
+
+
 //global array holding object values(clothing)
 var articles = [];
 var copyOfAllArticles = [];
+
+var articleIDToBlobFiles = new Map();
 
 const clothingTypetoTypeIDMap = new Map([
   ['t-shirt',0],
@@ -43,6 +47,12 @@ const broadCategoryAndTypes = new Map([
   ['shoes', [12, 17]],
   ['accesories', [10, 11, 13, 16]]
 ])
+
+
+let ArticleIDToImageSrc = new Map();
+
+
+
 
 function printArrayOfType(categoryType){
   return broadCategoryAndTypes.get(categoryType)
@@ -107,6 +117,38 @@ async function createArticleOfClothing(clothingType, clothingTypeID, clothingArt
       );
     }
 
+async function displayArticlesOfClothingAFTERFiltering(){
+  const clothesGrid = document.getElementById('thegrid');
+
+  for(var i = 0; i < articles.length; i++){
+    //create a section for each piece of clothing
+    const divItem = document.createElement('div');
+    divItem.className = 'clothes-item';
+    var current_article = articles[i];
+    var current_article_ID = current_article.clothingArticleID;
+    //console.log(current_article_ID);
+
+    var curr_article_src = ArticleIDToImageSrc.get(current_article_ID);
+    //add clothing image 
+    const img = document.createElement('img');
+    //if image has a pic use if not use default image
+    img.src = curr_article_src;
+    //img.alt = ;
+
+    //add clothing name
+    const paragraphArtcName = document.createElement('p');
+    paragraphArtcName.textContent = current_article.clothingArticleName;
+
+    //add(connect) the image and name of piece of clothes into the box
+    divItem.appendChild(img);
+    divItem.appendChild(paragraphArtcName);
+    //put the box into a section 
+    clothesGrid.appendChild(divItem);
+  }
+
+  
+}
+
 //get(fetcht) all the clothing pieces from the database of the specific user
 async function getAllArticlesOfClothing(){
    const response = await fetch(getAllArticlesOfClothing_API_url, {
@@ -146,11 +188,14 @@ async function displayArticlesOfClothing(){
     //create a section for each piece of clothing
     const divItem = document.createElement('div');
     divItem.className = 'clothes-item';
-    current_article = articles[i];
-    current_article_ID = current_article.clothingArticleID;
+    var current_article = articles[i];
+    var current_article_ID = current_article.clothingArticleID;
     console.log(current_article_ID);
     var curr_article_img = await getImageFile(current_article_ID);
+    //copyOfBlobFiles.push(curr_article_img);
+
     var curr_article_src = URL.createObjectURL(curr_article_img);
+    ArticleIDToImageSrc.set(current_article_ID, curr_article_src);
     //add clothing image 
     const img = document.createElement('img');
     //if image has a pic use if not use default image
@@ -203,10 +248,18 @@ async function main() {
   console.log(broadCategoryAndTypes)
   result = await printArrayOfType('tops');
   //console.log(result)
-  FilterAllArticlesForSelectedCategoryClothes(result)
+  await FilterAllArticlesForSelectedCategoryClothes(result);
 
-  console.log(copyOfAllArticles)
-  console.log(articles)
+  console.log(copyOfAllArticles);
+  console.log(articles);
+  console.log(ArticleIDToImageSrc);
+  //ocument.querySelectorAll('.clothes-item').forEach(e => e.remove());
+
+  //console.log(copyOfBlobFiles)
+
+
+  //await displayArticlesOfClothingAFTERFiltering()
+
 }
 
 main();
