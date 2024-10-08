@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 //url for api endpoints used for uploading an image of clothing article 
 imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
 //url for api endpoints used for creating an articles of clothing in the database for the user
@@ -9,7 +7,9 @@ getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticle
 getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
 //global array holding object values(clothing)
-articles = [];
+var articles = [];
+var copyOfAllArticles = [];
+
 const clothingTypetoTypeIDMap = new Map([
   ['t-shirt',0],
   ['polo shirt',1],
@@ -48,7 +48,23 @@ function printArrayOfType(categoryType){
   return broadCategoryAndTypes.get(categoryType)
 }
 
-//function printSelectedCategoryClothes
+async function FilterAllArticlesForSelectedCategoryClothes(typesIDArray){
+  let result = []
+  copyOfAllArticles = articles;
+  for (var i = 0; i < typesIDArray.length; i++){
+    let currentElement = typesIDArray[i];
+    
+    let allArticlesWithThisTypeID = articles.filter( (article) => article.clothingTypeID == currentElement);
+    //console.log(allArticlesWithThisTypeID)
+    for (const element of allArticlesWithThisTypeID){
+      result.push(element);
+    }
+    
+  }
+  articles = result;
+  console.log(result);
+  console.log(copyOfAllArticles)
+}
 
 
 // Prevent default form submission and handle the button click
@@ -106,7 +122,7 @@ async function getAllArticlesOfClothing(){
    for(var i = 0; i < array_length; i++){
     articles.push(data[i]);
    }
-   //console.log(articles);
+   console.log(articles);
 }
 
 async function getImageFile(current_article_ID){
@@ -185,11 +201,12 @@ async function main() {
   console.log(articles);
   await displayArticlesOfClothing();
   console.log(broadCategoryAndTypes)
-  result = printArrayOfType('tops');
-  console.log(result)
+  result = await printArrayOfType('tops');
+  //console.log(result)
+  FilterAllArticlesForSelectedCategoryClothes(result)
 
- 
-  
+  console.log(copyOfAllArticles)
+  console.log(articles)
 }
 
 main();

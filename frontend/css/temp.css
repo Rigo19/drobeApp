@@ -165,24 +165,25 @@ on
 
 /* Horizontally aligning the Clothes Grid */
 .clothes-grid {
-    display: flex; /* Flexbox for horizontal alignment */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: grid; /* Flexbox for horizontal alignment */
+    grid-template-columns: repeat(4, 1fr);/* 3 items per row */
     justify-items: center; /* Centering items horizontally */
     gap: 20px; /* Space between items */
     align-items: center;
-    flex-wrap: wrap; /* allow wrapping to the next row */
+    margin: 20px auto; /* center the grid horizontally*/
 }
 
 /* want a total of 3 itmes per row */
 .clothes-item {
-    width: calc(33.333% - 20px);
+    width: 100%;
     text-align: center;
 }
 
 .clothes-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 80%;
+    border-radius: 4px;
+    height: 20vw;
+    object-fit: cover;
 }
 
 .clothes-item p {
