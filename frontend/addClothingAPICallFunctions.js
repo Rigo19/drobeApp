@@ -8,9 +8,13 @@ getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
 
 
 
-//global array holding object values(clothing)
+//global array holding object values(clothing). Loaded when web page loads intitally
 var articles = [];
 var copyOfAllArticles = [];
+
+// holds the articles of data based on which filter button is clicked.
+var selectedArticles = [];
+
 
 var articleIDToBlobFiles = new Map();
 
@@ -51,14 +55,36 @@ const broadCategoryAndTypes = new Map([
 
 let ArticleIDToImageSrc = new Map();
 
-
-function printArrayOfType(categoryType){
+function returnArrayOfType(categoryType){
   return broadCategoryAndTypes.get(categoryType)
 }
 
+document.querySelectorAll(".category-button").forEach(btn => btn.addEventListener("click", async e => {
+
+  buttonValue = btn.id;
+  console.log(buttonValue);
+
+  if (buttonValue == "all"){
+    selectedArticles = articles;
+    document.querySelectorAll('.clothes-item').forEach(e => e.remove());
+    await displayArticlesOfClothing();
+    return;
+  }
+
+
+  var result = await returnArrayOfType(buttonValue);
+  //console.log(result)
+  await FilterAllArticlesForSelectedCategoryClothes(result);
+  document.querySelectorAll('.clothes-item').forEach(e => e.remove());
+
+  await displayArticlesOfClothingAFTERFiltering();
+
+}));
+
+
+
 async function FilterAllArticlesForSelectedCategoryClothes(typesIDArray){
   let result = []
-  copyOfAllArticles = articles;
   for (var i = 0; i < typesIDArray.length; i++){
     let currentElement = typesIDArray[i];
     
@@ -69,9 +95,8 @@ async function FilterAllArticlesForSelectedCategoryClothes(typesIDArray){
     }
     
   }
-  articles = result;
+  selectedArticles = result;
   console.log(result);
-  console.log(copyOfAllArticles)
 }
 
 
@@ -118,11 +143,11 @@ async function createArticleOfClothing(clothingType, clothingTypeID, clothingArt
 async function displayArticlesOfClothingAFTERFiltering(){
   const clothesGrid = document.getElementById('thegrid');
 
-  for(var i = 0; i < articles.length; i++){
+  for(var i = 0; i < selectedArticles.length; i++){
     //create a section for each piece of clothing
     const divItem = document.createElement('div');
     divItem.className = 'clothes-item';
-    var current_article = articles[i];
+    var current_article = selectedArticles[i];
     var current_article_ID = current_article.clothingArticleID;
     //console.log(current_article_ID);
 
@@ -162,6 +187,8 @@ async function getAllArticlesOfClothing(){
    for(var i = 0; i < array_length; i++){
     articles.push(data[i]);
    }
+   copyOfAllArticles = articles;
+   selectedArticles = articles;
    console.log(articles);
 }
 
@@ -179,14 +206,14 @@ async function getImageFile(current_article_ID){
 //to be displayed 
 //(process the JSON response and genertate HTML elements for each piece of clothing)
 async function displayArticlesOfClothing(){
-  console.log("Dispaly articles:", articles);
+  console.log("Dispaly articles:", selectedArticles);
   const clothesGrid = document.getElementById('thegrid');
 
-  for(var i = 0; i < articles.length; i++){
+  for(var i = 0; i < selectedArticles.length; i++){
     //create a section for each piece of clothing
     const divItem = document.createElement('div');
     divItem.className = 'clothes-item';
-    var current_article = articles[i];
+    var current_article = selectedArticles[i];
     var current_article_ID = current_article.clothingArticleID;
     console.log(current_article_ID);
     var curr_article_img = await getImageFile(current_article_ID);
@@ -233,7 +260,7 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
     await createArticleImage();
 
     const articles = await getAllArticlesOfClothing();
-    displayArticlesOfClothing(articles);
+    //displayArticlesOfClothing(articles);
 
     window.location.reload();
 });
@@ -248,14 +275,12 @@ async function main() {
   //console.log(articles);
   await displayArticlesOfClothing();
   //console.log(broadCategoryAndTypes)
-  result = await printArrayOfType('tops');
-  //console.log(result)
-  await FilterAllArticlesForSelectedCategoryClothes(result);
+  
 
   //console.log(copyOfAllArticles);
   //console.log(articles);
   //console.log(ArticleIDToImageSrc);
-  //ocument.querySelectorAll('.clothes-item').forEach(e => e.remove());
+  //document.querySelectorAll('.clothes-item').forEach(e => e.remove());
 
   //console.log(copyOfBlobFiles)
 
