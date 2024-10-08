@@ -52,8 +52,6 @@ const broadCategoryAndTypes = new Map([
 let ArticleIDToImageSrc = new Map();
 
 
-
-
 function printArrayOfType(categoryType){
   return broadCategoryAndTypes.get(categoryType)
 }
@@ -242,17 +240,21 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
 
 async function main() {
   localStorage.setItem("userID", 0);
+
+  var allButton = document.getElementById('all');
+  allButton.style.backgroundColor = '#e9ecef';
+
   await getAllArticlesOfClothing();
-  console.log(articles);
+  //console.log(articles);
   await displayArticlesOfClothing();
-  console.log(broadCategoryAndTypes)
+  //console.log(broadCategoryAndTypes)
   result = await printArrayOfType('tops');
   //console.log(result)
   await FilterAllArticlesForSelectedCategoryClothes(result);
 
-  console.log(copyOfAllArticles);
-  console.log(articles);
-  console.log(ArticleIDToImageSrc);
+  //console.log(copyOfAllArticles);
+  //console.log(articles);
+  //console.log(ArticleIDToImageSrc);
   //ocument.querySelectorAll('.clothes-item').forEach(e => e.remove());
 
   //console.log(copyOfBlobFiles)
