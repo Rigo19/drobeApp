@@ -88,7 +88,7 @@ h1{
 }
 
 .category-button:hover{
-    background-color: #e9ecef;
+    background-color: #e9ecef !important;
 }
 
 .category-button-container{
