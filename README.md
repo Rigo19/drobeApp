@@ -184,10 +184,10 @@ Feature 5: My Outfit Page
     - [CP-96](https://cs3398-romulans-f24.atlassian.net/browse/CP-90),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-96-update-add-clothing-button-to-dele)
   - `Jira Task: Blake - Ensure database and API functionality is working properly for My Closet`
-    - [CP-59](https://cs3398-romulans-f24.atlassian.net/browse/CP-12),
+    - [CP-59](https://cs3398-romulans-f24.atlassian.net/browse/CP-59),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-59-ensure-database-and-api-functional)
   - `Jira Task: Blake - Create unit tests for all API endpoints defined for 'My Closet' page`
-    - [CP-83](https://cs3398-romulans-f24.atlassian.net/browse/CP-12),
+    - [CP-83](https://cs3398-romulans-f24.atlassian.net/browse/CP-83),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-83-create-unit-tests-for-all-api-endp)
 
   - `Jira Task: Blake - Develop API endpoints to store data in DB`
