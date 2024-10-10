@@ -85,13 +85,13 @@ Feature 4: Add Clothing to My Closet
 Feature 5: My Outfit Page
 
 - As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions. CP-15
-- **Tasks:**
-  - Plan the Outfit Page Layout
-  - Create the page Layout
-  - Link outfits to database
-  - Add functionality to save outfits
-  - Make favorites functionality and/or filtering
-  - Develop API endpoint to create outfit in DB
+  - **Tasks:**
+    - Plan the Outfit Page Layout
+    - Create the page Layout
+    - Link outfits to database
+    - Add functionality to save outfits
+    - Make favorites functionality and/or filtering
+    - Develop API endpoint to create outfit in DB
 
 
 ### Sprint 1
@@ -237,8 +237,8 @@ Feature 5: My Outfit Page
 **Next Steps**
 Sprint 2 Tasks:
 
-James Cowley
-Elham Ul Islam
+**James Cowley**
+**Elham Ul Islam**
 **Rigo:**
   - Provide user the functionality to click on the grid containing a piece of clothing to reveal the information about the clothing(color, clothing type, time added, marked favorite or not)
   - Provide user the functionality to add pieces of clothing to an outfit from the My Closet page
