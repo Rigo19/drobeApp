@@ -52,7 +52,7 @@ Feature 1: Organization for Developers
 <br/>
 Feature 2: Homepage for Drobe App
 
-- As a user, I would like to see a well designed website so that I can navigate the page easily.
+- As a user, I would like to see a well designed website so that I can navigate the page easily. CP-7
   - **Tasks:**
     - Plan Layout of Homepage
     - Create basic layout using HTML/CSS
@@ -63,7 +63,7 @@ Feature 2: Homepage for Drobe App
 <br/>
 Feature 3: My Closet Page
 
-- As a user, I want a well designed "closet" page, so that I can easily see what piece of clothes I own.
+- As a user, I want a well designed "closet" page, so that I can easily see what piece of clothes I own. CP-8
   - **Tasks:**
     - Plan layout of My Closet page
     - Develop basic layout of page
@@ -71,10 +71,11 @@ Feature 3: My Closet Page
     - Implement database for My Closet
     - Develop API endpoints
   
+  
 <br/>
 Feature 4: Add Clothing to My Closet
 
-- As a user, I would like to be able to add clothing to My Closet, so that I can easily organize my clothes and create outfits.
+- As a user, I would like to be able to add clothing to My Closet, so that I can easily organize my clothes and create outfits. CP-9
   - **Tasks:**
     - Create "add clothing" button and form in modal
     - Plan layout and connections to database
@@ -85,7 +86,7 @@ Feature 4: Add Clothing to My Closet
 <br/>
 Feature 5: My Outfit Page
 
-- As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions.
+- As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions. CP-15
   - **Tasks:**
     - Plan the Outfit Page Layout
     - Create the page Layout
