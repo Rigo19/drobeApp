@@ -10,7 +10,6 @@ Anyone who has interest in fashion or clothes to any extent is in for a great ex
 We're wanting to create a place where those who love clothing and the possibility of endless styles have somewhere they can find home in. This is a place where one can seek to find enjoyment and inspiration from friends as they share their outfits. We aim for this community to be a welcoming place that one can find joy in.
 
 
-
 ## Table of Contents
 - [DrobeApp](#drobeapp)
   - [Vision:](#vision)
@@ -24,7 +23,7 @@ We're wanting to create a place where those who love clothing and the possibilit
 
 
 ## General Information
-- ![An image of a clothes hanger. ](./teamLogo/clothesHanger.png)
+<img src = './teamLogo/clothesHanger.png' width=200>
 
 
 ## Technologies Used
@@ -33,11 +32,7 @@ We're wanting to create a place where those who love clothing and the possibilit
 - [FastAPI](https://fastapi.tiangolo.com)
 - [MySQL](https://www.mysql.com)
 
-
 ## Features
-
-Sprint 1 Contributions
-
 Feature 1: Organization for Developers
 
 - As a developer, I would like the repo to have some early set up in the form of organizing the directories, creating a database and its tables, and CSS styling that will be able to be used for different site pages.
@@ -98,8 +93,6 @@ Feature 5: My Outfit Page
     - Make favorites functionality and/or filtering
     - Develop API endpoint to create outfit in DB
 
-
-<br/>
 
 ### Sprint 1
 
@@ -175,9 +168,7 @@ Feature 5: My Outfit Page
     - [CP-87](https://cs3398-romulans-f24.atlassian.net/browse/CP-87),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-87-develop-api-endpoint-to-allow-user)
   
-  <br/>
-
-**Blake**: "Devloped API endpoints to allow a user to create a clothing article, developed scripts to create DB and 2 tables. Helped implement functionality to filter clothes by type on the 'My Closet' page, created unit tests for API endpoints."
+**Blake**: "Developed API endpoints to allow a user to create a clothing article, developed scripts to create DB and 2 tables. Helped implement functionality to filter clothes by type on the 'My Closet' page, created unit tests for API endpoints."
   
   - `Jira Task: Blake - Set Up initial directory structure`
     - [CP-37](https://cs3398-romulans-f24.atlassian.net/browse/CP-37),
@@ -219,7 +210,6 @@ Feature 5: My Outfit Page
     - [CP-95](https://cs3398-romulans-f24.atlassian.net/browse/CP-95),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-95-implement-functionality-to-load-cl)
 
-  <br/>
 
 **Rigo**: "provided users with a layout and some integration for the functionality of the My Closet page to see an overview of their closet, which contains the articles for every clothing type."
 
@@ -243,23 +233,24 @@ Feature 5: My Outfit Page
     - [CP-93](https://cs3398-romulans-f24.atlassian.net/browse/CP-93),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-93-design-and-organize-a-presentable-)
     
-<br/>
 
- Next Steps
-    Sprint 2
-    James Cowley
-    Elham Ul Islam
+**Next Steps**
+Sprint 2 Tasks:
 
-    **Rigo**:
-      -**Tasks:**
-        - Provoide user the functionality to click on the grid containing a piece of clothing to reveal the information about the clothing(color, clothing type, time added, marked favorite or not)
-        - Provide user the functionality to add pieces of clothing to an outfit from the My Closet page
-        - Work on implementing the functionality of a My Closet for a specific user (user who's signed in)
+**James Cowley**
+**Elham Ul Islam**
+**Rigo:**
+  - Provide user the functionality to click on the grid containing a piece of clothing to reveal the information about the clothing(color, clothing type, time added, marked favorite or not)
+  - Provide user the functionality to add pieces of clothing to an outfit from the My Closet page
+  - Work on implementing the functionality of a My Closet for a specific user (user who's signed in)
 
-    Blake Jameson
-    Mackenzie Toliver
-     - **Tasks:**
-      - Develop API endpoint  to delete outfit images
-      - Develop API endpoint to delete all articles of clothing in outfits
-      - Develop API endpoint for deleting clothing article image
+**Blake Jameson:**
+  - Develop API endpoints for the login process
+  - Develop API endpoints for the registration process
+  - Contribute to My Closet and My Outfit page as needed
+
+**Mackenzie Toliver:**
+  - Develop API endpoint to delete outfit images
+  - Develop API endpoint to delete all articles of clothing in outfits
+  - Develop API endpoint for deleting clothing article image
 
