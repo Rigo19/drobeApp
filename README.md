@@ -48,6 +48,7 @@ Feature 1: Organization for Developers
     - Develop script that creates ArticleToImage, OutfitsByUser and ArticlesToOutfits db tables
     - Develop script that creates ArticlesToOutfits and WebSession DB tables
     - Test database and table creation scripts on multiple machines
+    - New Team Set Up, Mackenzie, CP-92
 
 <br/>
 Feature 2: Homepage for Drobe App
@@ -82,6 +83,7 @@ Feature 4: Add Clothing to My Closet
     - Develop form and integrate with database
     - Develop editing existing clothing articles.
     - Test Add Clothing form, make sure it works with backend
+    - Develop API endpoint to delete their clothing article, Mackenzie, CP-87
   
 <br/>
 Feature 5: My Outfit Page
@@ -93,6 +95,7 @@ Feature 5: My Outfit Page
     - Link outfits to database
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
+    - Develop API endpoint to create outfit in DB, Mackenzie, CP-88
 
 <br/>
     Report
