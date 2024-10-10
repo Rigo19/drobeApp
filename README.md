@@ -1,7 +1,7 @@
 # DrobeApp
 ## Vision:
 
- This project consists of team members James Cowley, Elham Ul Islam, Rigo Lizaola, and Blake Jameson.
+ This project consists of team members James Cowley, Elham Ul Islam, Rigo Lizaola, Blake Jameson, and Mackenzie Toliver.
 
  We are creating an application where you have access to a virtual wardrobe. Here, you can save the different outfits and clothes you have.
 
@@ -35,7 +35,9 @@ We're wanting to create a place where those who love clothing and the possibilit
 
 ## Features
 
-Feature 1
+Sprint 1 Contributions
+
+Feature 1: Organization for Developers
 
 - As a developer, I would like the repo to have some early set up in the form of organizing the directories, creating a database and its tables, and CSS styling that will be able to be used for different site pages.
 
@@ -46,11 +48,12 @@ Feature 1
     - Develop script that creates ArticleToImage, OutfitsByUser and ArticlesToOutfits db tables
     - Develop script that creates ArticlesToOutfits and WebSession DB tables
     - Test database and table creation scripts on multiple machines
+    - New Team Set Up, Mackenzie, CP-92
 
 <br/>
-Feature 2
+Feature 2: Homepage for Drobe App
 
-- As a user, I would like to see a well designed website so that I can navigate the page easily.
+- As a user, I would like to see a well designed website so that I can navigate the page easily. CP-7
   - **Tasks:**
     - Plan Layout of Homepage
     - Create basic layout using HTML/CSS
@@ -59,9 +62,9 @@ Feature 2
     - Test homepage layout on multiple devices to make sure it is responsive.
     
 <br/>
-Feature 3
+Feature 3: My Closet Page
 
-- As a user, I want a well designed "closet" page, so that I can easily see what piece of clothes I own.
+- As a user, I want a well designed "closet" page, so that I can easily see what piece of clothes I own. CP-8
   - **Tasks:**
     - Plan layout of My Closet page
     - Develop basic layout of page
@@ -69,24 +72,46 @@ Feature 3
     - Implement database for My Closet
     - Develop API endpoints
   
+  
 <br/>
-Feature 4
+Feature 4: Add Clothing to My Closet
 
-- As a user, I would like to be able to add clothing to My Closet, so that I can easily organize my clothes and create outfits.
+- As a user, I would like to be able to add clothing to My Closet, so that I can easily organize my clothes and create outfits. CP-9
   - **Tasks:**
     - Create "add clothing" button and form in modal
     - Plan layout and connections to database
     - Develop form and integrate with database
     - Develop editing existing clothing articles.
     - Test Add Clothing form, make sure it works with backend
+    - Develop API endpoint to delete their clothing article, Mackenzie, CP-87
   
 <br/>
-Feature 5
+Feature 5: My Outfit Page
 
-- As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions.
+- As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions. CP-15
   - **Tasks:**
     - Plan the Outfit Page Layout
     - Create the page Layout
     - Link outfits to database
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
+    - Develop API endpoint to create outfit in DB, Mackenzie, CP-88
+
+<br/>
+    Report
+    
+    
+<br/>
+
+ Next Steps
+    Sprint 2
+    James Cowley
+    Elham Ul Islam
+    Rigo Lizaola
+    Blake Jameson
+    Mackenzie Toliver
+     - **Tasks:**
+      - Develop API endpoint  to delete outfit images
+      - Develop API endpoint to delete all articles of clothing in outfits
+      - Develop API endpoint for deleting clothing article image
+
