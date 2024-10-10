@@ -18,6 +18,8 @@ We're wanting to create a place where those who love clothing and the possibilit
   - [General Information](#general-information)
   - [Technologies Used](#technologies-used)
   - [Features](#features)
+    - [Sprint 1](#sprint-1)
+      - [Contributions](#contributions)
 <!-- * [License](#license) -->
 
 
@@ -30,7 +32,6 @@ We're wanting to create a place where those who love clothing and the possibilit
 - [Python](https://www.python.org)
 - [FastAPI](https://fastapi.tiangolo.com)
 - [MySQL](https://www.mysql.com)
-- [SwiftUI](https://developer.apple.com/tutorials/swiftui)
 
 
 ## Features
@@ -48,7 +49,7 @@ Feature 1: Organization for Developers
     - Develop script that creates ArticleToImage, OutfitsByUser and ArticlesToOutfits db tables
     - Develop script that creates ArticlesToOutfits and WebSession DB tables
     - Test database and table creation scripts on multiple machines
-    - New Team Set Up, Mackenzie, CP-92
+    - New Team Set Up
 
 <br/>
 Feature 2: Homepage for Drobe App
@@ -83,7 +84,7 @@ Feature 4: Add Clothing to My Closet
     - Develop form and integrate with database
     - Develop editing existing clothing articles.
     - Test Add Clothing form, make sure it works with backend
-    - Develop API endpoint to delete their clothing article, Mackenzie, CP-87
+    - Develop API endpoint to delete their clothing article
   
 <br/>
 Feature 5: My Outfit Page
@@ -95,7 +96,7 @@ Feature 5: My Outfit Page
     - Link outfits to database
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
-    - Develop API endpoint to create outfit in DB, Mackenzie, CP-88
+    - Develop API endpoint to create outfit in DB
 
 
 <br/>
@@ -147,6 +148,60 @@ Feature 5: My Outfit Page
 
       - CP-40 Develop script that creates ArticleToImage, OutfitsByUser and ArticlesToOutfits db tables (Elham)
         - https://cs3398-romulans-f24.atlassian.net/browse/CP-40?atlOrigin=eyJpIjoiOTBmMjNkNDQyNDM2NDllMmJlY2Q4OTY1ZTRhY2NjN2UiLCJwIjoiaiJ9
+
+<br/>
+
+**Mackenzie**: "Devloped API endpoints to retrieve outfits, create an outfit, and delete a clothing article. Also updated the database creation script and created a script for teammates to alter their DB field names for 2 tables"
+  - `Jira Task: Mackenzie - Develop API endpoints that retrieves Outfits`
+    - [CP-89](https://cs3398-romulans-f24.atlassian.net/browse/CP-89),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-89-develop-api-endpoints-that-retriev)
+  - `Jira Task: Mackenzie - Develop API endpoint to create an outfit in the DB`
+    - [CP-88](https://cs3398-romulans-f24.atlassian.net/browse/CP-88),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/CP-88-develop-api-endpoint-to-create-an-)
+  - `Jira Task: Mackenzie - Set Up because of New Team`
+    - [CP-92](https://cs3398-romulans-f24.atlassian.net/browse/CP-92),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-92-set-up-because-of-new-team)
+  - `Jira Task: Mackenzie - Develop API endpoint to allow user to delete their clothing article`
+    - [CP-87](https://cs3398-romulans-f24.atlassian.net/browse/CP-87),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-87-develop-api-endpoint-to-allow-user)
+  
+
+
+**Blake**: "Devloped API endpoints to allow a user to create a clothing article, developed scripts to create DB and 2 tables. Helped implement functionality to filter clothes by type on the 'My Closet' page, created unit tests for API endpoints."
+  - `Jira Task: Blake - Set Up initial directory structure`
+    - [CP-37](https://cs3398-romulans-f24.atlassian.net/browse/CP-37),
+    [Bitbucket](https://bitbucket.org/%7B298d1d14-4211-4ef6-8545-a3b968aef311%7D/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/pull-requests/1)
+  - `Jira Task: Blake - Develop script that creates database and tables forTypesOfClothing and ArticlesOfClothing`
+    - [CP-39](https://cs3398-romulans-f24.atlassian.net/browse/CP-39),
+    [Bitbucket](https://bitbucket.org/%7B298d1d14-4211-4ef6-8545-a3b968aef311%7D/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/pull-requests/1)
+  - `Jira Task: Blake - Test database and table creation scripts on multiple machines`
+    - [CP-42](https://cs3398-romulans-f24.atlassian.net/browse/CP-42),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-42-test-database-and-table-creation-s)
+  - `Jira Task: Blake - Creating Javascript function that calls backend API to store clothing article image and data`
+    - [CP-62](https://cs3398-romulans-f24.atlassian.net/browse/CP-62),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-62-creating-javascript-function-that-)
+  - `Jira Task: Blake - update "add clothing" button to delete 2 of the current fields and create dropdown for item type`
+    - [CP-96](https://cs3398-romulans-f24.atlassian.net/browse/CP-90),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-96-update-add-clothing-button-to-dele)
+  - `Jira Task: Blake - Ensure database and API functionality is working properly for My Closet`
+    - [CP-59](https://cs3398-romulans-f24.atlassian.net/browse/CP-12),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-59-ensure-database-and-api-functional)
+  - `Jira Task: Blake - Create unit tests for all API endpoints defined for 'My Closet' page`
+    - [CP-83](https://cs3398-romulans-f24.atlassian.net/browse/CP-12),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-83-create-unit-tests-for-all-api-endp)
+
+  - `Jira Task: Blake - Develop API endpoints to store data in DB`
+    - [CP-84](https://cs3398-romulans-f24.atlassian.net/browse/CP-84),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-84-develop-api-endpoints-to-store-dat)
+
+  - `Jira Task: Blake - Make filtering functionality for the My Closet Page`
+    - [CP-94](https://cs3398-romulans-f24.atlassian.net/browse/CP-94),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-94-make-filtering-functionality-for-t)
+
+  - `Jira Task: Blake - Implement functionality to load clothing articles into the "My Closet" overview section`
+    - [CP-95](https://cs3398-romulans-f24.atlassian.net/browse/CP-95),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-95-implement-functionality-to-load-cl)
+    
 
     
 <br/>
