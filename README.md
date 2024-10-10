@@ -92,15 +92,22 @@ Feature 5: My Outfit Page
     - Link outfits to database
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
-    
+
+<br/>
     Report
     
     
-    
-    Next Steps
+<br/>
+
+ Next Steps
     Sprint 2
     James Cowley
     Elham Ul Islam
     Rigo Lizaola
     Blake Jameson
     Mackenzie Toliver
+     - **Tasks:**
+      - Develop API endpoint  to delete outfit images
+      - Develop API endpoint to delete all articles of clothing in outfits
+      - Develop API endpoint for deleting clothing article image
+
