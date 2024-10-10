@@ -10,7 +10,6 @@ Anyone who has interest in fashion or clothes to any extent is in for a great ex
 We're wanting to create a place where those who love clothing and the possibility of endless styles have somewhere they can find home in. This is a place where one can seek to find enjoyment and inspiration from friends as they share their outfits. We aim for this community to be a welcoming place that one can find joy in.
 
 
-
 ## Table of Contents
 - [DrobeApp](#drobeapp)
   - [Vision:](#vision)
@@ -86,15 +85,14 @@ Feature 4: Add Clothing to My Closet
 Feature 5: My Outfit Page
 
 - As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions. CP-15
-  - **Tasks:**
-    - Plan the Outfit Page Layout
-    - Create the page Layout
-    - Link outfits to database
-    - Add functionality to save outfits
-    - Make favorites functionality and/or filtering
-    - Develop API endpoint to create outfit in DB
-    - 
-<br/>
+- **Tasks:**
+  - Plan the Outfit Page Layout
+  - Create the page Layout
+  - Link outfits to database
+  - Add functionality to save outfits
+  - Make favorites functionality and/or filtering
+  - Develop API endpoint to create outfit in DB
+
 
 ### Sprint 1
 
@@ -170,9 +168,7 @@ Feature 5: My Outfit Page
     - [CP-87](https://cs3398-romulans-f24.atlassian.net/browse/CP-87),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-87-develop-api-endpoint-to-allow-user)
   
-
-
-**Blake**: "Devloped API endpoints to allow a user to create a clothing article, developed scripts to create DB and 2 tables. Helped implement functionality to filter clothes by type on the 'My Closet' page, created unit tests for API endpoints."
+**Blake**: "Developed API endpoints to allow a user to create a clothing article, developed scripts to create DB and 2 tables. Helped implement functionality to filter clothes by type on the 'My Closet' page, created unit tests for API endpoints."
   
   - `Jira Task: Blake - Set Up initial directory structure`
     - [CP-37](https://cs3398-romulans-f24.atlassian.net/browse/CP-37),
@@ -213,21 +209,48 @@ Feature 5: My Outfit Page
   - `Jira Task: Blake - Implement functionality to load clothing articles into the "My Closet" overview section`
     - [CP-95](https://cs3398-romulans-f24.atlassian.net/browse/CP-95),
     [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/%7Bc2902cac-f2c6-4e67-a5af-d9c16186ffc0%7D/branch/feature/CP-95-implement-functionality-to-load-cl)
+
+
+**Rigo**: "provided users with a layout and some integration for the functionality of the My Closet page to see an overview of their closet, which contains the articles for every clothing type."
+
+  - `Jira Task: Rigo - Plan layout of homepage`
+    - [CP-56](https://cs3398-romulans-f24.atlassian.net/browse/CP-56),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-56-plan-layout-of-my-closet-page)
+
+  - `Jira Task: Rigo - Develop basic layout of page`
+    - [CP-57](https://cs3398-romulans-f24.atlassian.net/browse/CP-57),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-57-develop-basic-layout-of-page)
+
+  - `Jira Task: Rigo - Plan layout of homepage`
+    - [CP-61](https://cs3398-romulans-f24.atlassian.net/browse/CP-61),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-61-create-add-clothing-button-and-for)
+
+  - `Jira Task: Rigo - Develop grid based mapping of clothing items`
+    - [CP-58](https://cs3398-romulans-f24.atlassian.net/browse/CP-58),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-58-develop-grid-based-mapping-of-clot)
+
+  - `Jira Task: Rigo -Design and organize a presentable my closet(visual)`
+    - [CP-93](https://cs3398-romulans-f24.atlassian.net/browse/CP-93),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-93-design-and-organize-a-presentable-)
     
 
-    
-<br/>
+**Next Steps**
+Sprint 2 Tasks:
 
- **Next Steps**
-  Sprint 2 Tasks 
+James Cowley
+Elham Ul Islam
+**Rigo:**
+  - Provide user the functionality to click on the grid containing a piece of clothing to reveal the information about the clothing(color, clothing type, time added, marked favorite or not)
+  - Provide user the functionality to add pieces of clothing to an outfit from the My Closet page
+  - Work on implementing the functionality of a My Closet for a specific user (user who's signed in)
 
-  James Cowley
-  Elham Ul Islam
-  Rigo Lizaola
-  Blake Jameson
-  Mackenzie Toliver
+**Blake Jameson:**
+  - Develop API endpoints for the login process
+  - Develop API endpoints for the registration process
+  - Contribute to My Closet and My Outfit page as needed
 
-  - Develop API endpoint  to delete outfit images
+**Mackenzie Toliver:**
+  - Develop API endpoint to delete outfit images
   - Develop API endpoint to delete all articles of clothing in outfits
   - Develop API endpoint for deleting clothing article image
 
