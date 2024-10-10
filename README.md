@@ -238,7 +238,13 @@ Feature 5: My Outfit Page
 Sprint 2 Tasks:
 
 **James Cowley**
-**Elham Ul Islam**
+**Elham Ul Islam:**
+  - Make working outfit page to display outfits
+
+  - Make functionality to create outfits using items
+  
+  - Functionality to pick favorites/filter outfits
+
 
 **Rigo:**
   
