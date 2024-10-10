@@ -238,6 +238,12 @@ Feature 5: My Outfit Page
 Sprint 2 Tasks:
 
 **James Cowley**
+  - Create implementation of Recommended Outfit
+
+  - Make preview of outfits on home page.
+
+  - Improve repsonsiveness of My Closet on home page.
+
 **Elham Ul Islam:**
   - Make working outfit page to display outfits
 
