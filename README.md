@@ -97,13 +97,35 @@ Feature 5: My Outfit Page
     - Make favorites functionality and/or filtering
     - Develop API endpoint to create outfit in DB, Mackenzie, CP-88
 
-<br/>
-    Report
 
+<br/>
+
+### Sprint 1
+
+#### Contributions
+
+**James**: "provided users with a homepage to see an overview of their closet and outfits."
+  - `Jira Task: James - Plan layout of homepage`
+    - [CP-10](https://cs3398-romulans-f24.atlassian.net/browse/CP-10),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/commits/branch/feature%2FCP-10-plan-layout-of-homepage)
+  - `Jira Task: James - Create basic layout using HTML/CSS`
+    - [CP-11](https://cs3398-romulans-f24.atlassian.net/browse/CP-11),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/commits/branch/feature%2FCP-11-create-basic-layout-using-html-css)
+  - `Jira Task: James - Create Recommeded Outfit section`
+    - [CP-14](https://cs3398-romulans-f24.atlassian.net/browse/CP-14),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/branch/feature/CP-10-plan-layout-of-homepage)
+  - `Jira Task: James - Create basic CSS styling that will be used for different pages`
+    - [CP-38](https://cs3398-romulans-f24.atlassian.net/browse/CP-38),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/commits/branch/feature%2FCP-36-initial-repo-and-styling-set-up)
+  - `Jira Task: James - Create "My Outfits" and "My Closet" overview on homepage`
+    - [CP-90](https://cs3398-romulans-f24.atlassian.net/browse/CP-90),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/commits/branch/feature%2FCP-14-create-recommended-outfit-section)
+  - `Jira Task: James - Test homepage layout on multiple devices to make sure it is responsive.`
+    - [CP-12](https://cs3398-romulans-f24.atlassian.net/browse/CP-12),
+    [Bitbucket](https://bitbucket.org/cs3398-romulans-f24/drobeapp/commits/branch/feature%2FCP-12-test-homepage-layout-on-multiple-d)
 
 <br/>
   
-### Contributions
     **Elham - Worked on Database Scripts, API endpoints and frontend for Outfit Page**
       - CP-16 Plan the Outfit Page Layout (Elham)
         - https://cs3398-romulans-f24.atlassian.net/browse/CP-16?atlOrigin=eyJpIjoiZTAxYTQ3M2Q3OTNiNGY3YWE3NmZjNGIzODg5NjFjNTIiLCJwIjoiaiJ9
