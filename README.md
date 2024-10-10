@@ -24,7 +24,7 @@ We're wanting to create a place where those who love clothing and the possibilit
 
 
 ## General Information
-- ![An image of a clothes hanger. ](./teamLogo/clothesHanger.png)
+<img src = './teamLogo/clothesHanger.png' width=200>
 
 
 ## Technologies Used
@@ -33,11 +33,7 @@ We're wanting to create a place where those who love clothing and the possibilit
 - [FastAPI](https://fastapi.tiangolo.com)
 - [MySQL](https://www.mysql.com)
 
-
 ## Features
-
-Sprint 1 Contributions
-
 Feature 1: Organization for Developers
 
 - As a developer, I would like the repo to have some early set up in the form of organizing the directories, creating a database and its tables, and CSS styling that will be able to be used for different site pages.
@@ -97,8 +93,7 @@ Feature 5: My Outfit Page
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
     - Develop API endpoint to create outfit in DB
-
-
+    - 
 <br/>
 
 ### Sprint 1
@@ -223,15 +218,16 @@ Feature 5: My Outfit Page
     
 <br/>
 
- Next Steps
-    Sprint 2
-    James Cowley
-    Elham Ul Islam
-    Rigo Lizaola
-    Blake Jameson
-    Mackenzie Toliver
-     - **Tasks:**
-      - Develop API endpoint  to delete outfit images
-      - Develop API endpoint to delete all articles of clothing in outfits
-      - Develop API endpoint for deleting clothing article image
+ **Next Steps**
+  Sprint 2 Tasks 
+
+  James Cowley
+  Elham Ul Islam
+  Rigo Lizaola
+  Blake Jameson
+  Mackenzie Toliver
+
+  - Develop API endpoint  to delete outfit images
+  - Develop API endpoint to delete all articles of clothing in outfits
+  - Develop API endpoint for deleting clothing article image
 
