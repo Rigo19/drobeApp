@@ -239,18 +239,28 @@ Sprint 2 Tasks:
 
 **James Cowley**
 **Elham Ul Islam**
+
 **Rigo:**
+  
   - Provide user the functionality to click on the grid containing a piece of clothing to reveal the information about the clothing(color, clothing type, time added, marked favorite or not)
+  
   - Provide user the functionality to add pieces of clothing to an outfit from the My Closet page
+  
   - Work on implementing the functionality of a My Closet for a specific user (user who's signed in)
 
 **Blake Jameson:**
+
   - Develop API endpoints for the login process
+  
   - Develop API endpoints for the registration process
+  
   - Contribute to My Closet and My Outfit page as needed
 
 **Mackenzie Toliver:**
+
   - Develop API endpoint to delete outfit images
+  
   - Develop API endpoint to delete all articles of clothing in outfits
+  
   - Develop API endpoint for deleting clothing article image
 
