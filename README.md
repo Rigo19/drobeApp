@@ -35,7 +35,9 @@ We're wanting to create a place where those who love clothing and the possibilit
 
 ## Features
 
-Feature 1
+Sprint 1 Contributions
+
+Feature 1: Organization for Developers
 
 - As a developer, I would like the repo to have some early set up in the form of organizing the directories, creating a database and its tables, and CSS styling that will be able to be used for different site pages.
 
@@ -48,7 +50,7 @@ Feature 1
     - Test database and table creation scripts on multiple machines
 
 <br/>
-Feature 2
+Feature 2: Homepage for Drobe App
 
 - As a user, I would like to see a well designed website so that I can navigate the page easily.
   - **Tasks:**
@@ -59,7 +61,7 @@ Feature 2
     - Test homepage layout on multiple devices to make sure it is responsive.
     
 <br/>
-Feature 3
+Feature 3: My Closet Page
 
 - As a user, I want a well designed "closet" page, so that I can easily see what piece of clothes I own.
   - **Tasks:**
@@ -70,7 +72,7 @@ Feature 3
     - Develop API endpoints
   
 <br/>
-Feature 4
+Feature 4: Add Clothing to My Closet
 
 - As a user, I would like to be able to add clothing to My Closet, so that I can easily organize my clothes and create outfits.
   - **Tasks:**
@@ -81,7 +83,7 @@ Feature 4
     - Test Add Clothing form, make sure it works with backend
   
 <br/>
-Feature 5
+Feature 5: My Outfit Page
 
 - As a user, I would like an Outfit page that allows me to view, create, and save outfits using items from my wardrobe so that I can easily plan and organize what I wear for different occasions.
   - **Tasks:**
@@ -90,3 +92,15 @@ Feature 5
     - Link outfits to database
     - Add functionality to save outfits
     - Make favorites functionality and/or filtering
+    
+    Report
+    
+    
+    
+    Next Steps
+    Sprint 2
+    James Cowley
+    Elham Ul Islam
+    Rigo Lizaola
+    Blake Jameson
+    Mackenzie Toliver
