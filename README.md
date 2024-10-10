@@ -99,7 +99,33 @@ Feature 5: My Outfit Page
 
 <br/>
     Report
-    
+
+
+<br/>
+  
+### Contributions
+    **Elham - Worked on Database Scripts, API endpoints and frontend for Outfit Page**
+      - CP-16 Plan the Outfit Page Layout (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-16?atlOrigin=eyJpIjoiZTAxYTQ3M2Q3OTNiNGY3YWE3NmZjNGIzODg5NjFjNTIiLCJwIjoiaiJ9
+
+      - CP-17 Create the page layout (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-17?atlOrigin=eyJpIjoiNDQzMjlhMzVlNzM2NGVlMjk4YTg0MjY5YzUxNzlkYWYiLCJwIjoiaiJ9
+
+      - CP-60 Develop API endpoints to retrieve data from DB (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-60?atlOrigin=eyJpIjoiYTU5OWExYjc1NjA3NDJkM2E0Y2UxZTRlNjAzMWVkMWMiLCJwIjoiaiJ9
+
+      - CP-85 Research APIs (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-85?atlOrigin=eyJpIjoiMmIzYzhmOGNkMjQ3NGQ2Mjk5M2Q4OWM2MmRmMWU0OGEiLCJwIjoiaiJ9
+
+      - CP-86 Develop API endpoints to handle a user modifying their clothing articles (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-86?atlOrigin=eyJpIjoiOTA1MWI2ZTcwZGM5NDQzZDg1MmFiNGQ4MDIyM2NlYzYiLCJwIjoiaiJ9
+
+      - CP-41 Develop script that creates UserInfo and WebSession DB tables  (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-41?atlOrigin=eyJpIjoiZTJhNmI3M2JmY2EzNDljMThiMjIxOGI3M2JhMzFiZTgiLCJwIjoiaiJ9
+
+      - CP-40 Develop script that creates ArticleToImage, OutfitsByUser and ArticlesToOutfits db tables (Elham)
+        - https://cs3398-romulans-f24.atlassian.net/browse/CP-40?atlOrigin=eyJpIjoiOTBmMjNkNDQyNDM2NDllMmJlY2Q4OTY1ZTRhY2NjN2UiLCJwIjoiaiJ9
+
     
 <br/>
 
