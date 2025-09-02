@@ -1,0 +1,54 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/closet",
+      "destination": "/closet.html"
+    },
+    {
+      "source": "/outfits",
+      "destination": "/myoutfits.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/registration.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/login.html",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}
