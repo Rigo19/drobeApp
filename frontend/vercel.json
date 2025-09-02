@@ -36,12 +36,6 @@
       "permanent": false
     }
   ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/login.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
