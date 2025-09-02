@@ -1,14 +1,21 @@
 [phases.setup]
-nixPkgs = ["python311", "python311Packages.pip"]
+nixPkgs = ["python311", "python311Packages.pip", "python311Packages.virtualenv"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
-
-[start]
-cmd = "python deploy.py"
+cmds = [
+    "python -m venv /opt/venv",
+    "source /opt/venv/bin/activate",
+    "pip install --upgrade pip",
+    "pip install -r requirements.txt"
+]
 
 [phases.build]
 cmds = ["echo 'Building Python FastAPI application...'"]
 
+[start]
+cmd = "source /opt/venv/bin/activate && python deploy.py"
+
 [variables]
 PYTHONPATH = "."
+VIRTUAL_ENV = "/opt/venv"
+PATH = "/opt/venv/bin:$PATH"
