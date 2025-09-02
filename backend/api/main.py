@@ -1,50 +1,62 @@
 # Use the following link as reference for initial API setup:
 # https://fastapi.tiangolo.com/tutorial/first-steps/
 
-from typing import Annotated, Optional
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-import mysql.connector
-from datetime import datetime
-import sys
-from mysql.connector import errors
-from fastapi import APIRouter
-from .routers import creation, deletion, modification, retrieval
 
 load_dotenv()
 
-databaseHost = os.getenv('host')
-databaseUser = os.getenv('user')
-databasePassword = os.getenv('password')
+# Create a simple FastAPI app first to test
+app = FastAPI(title="Drobe API", version="1.0.0")
 
-
-
-
-
-# the cursor defined below is what you will 
-# use to run queries with the database
-
-origins = ['*']
-
-# the code below ensures that CORS errors don't occur during API calls
-app = FastAPI()
-
-app.include_router(creation.router)
-app.include_router(deletion.router)
-app.include_router(modification.router)
-app.include_router(retrieval.router)
-
-
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add a simple test endpoint
+@app.get("/")
+async def root():
+    return {"message": "Drobe API is running!"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "message": "Drobe API is working!"}
+
+# Try to import routers one by one to identify any issues
+try:
+    from .routers import creation
+    app.include_router(creation.router, prefix="/api")
+    print("✅ Successfully imported creation router")
+except Exception as e:
+    print(f"❌ Error importing creation router: {e}")
+
+try:
+    from .routers import deletion
+    app.include_router(deletion.router, prefix="/api")
+    print("✅ Successfully imported deletion router")
+except Exception as e:
+    print(f"❌ Error importing deletion router: {e}")
+
+try:
+    from .routers import modification
+    app.include_router(modification.router, prefix="/api")
+    print("✅ Successfully imported modification router")
+except Exception as e:
+    print(f"❌ Error importing modification router: {e}")
+
+try:
+    from .routers import retrieval
+    app.include_router(retrieval.router, prefix="/api")
+    print("✅ Successfully imported retrieval router")
+except Exception as e:
+    print(f"❌ Error importing retrieval router: {e}")
 
 if __name__ == "__main__":
     import uvicorn
