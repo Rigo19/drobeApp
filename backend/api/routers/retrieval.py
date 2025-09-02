@@ -10,9 +10,42 @@ while drobeDatabaseConnection == None or drobeDatabaseCursor == None:
     print("waiting")
     from api.config.databaseconfig import drobeDatabaseConnection, drobeDatabaseCursor
 
-    
+# Define the login request model
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
 router = APIRouter()
 
+# Login endpoint
+@router.post("/loginAttempt/")
+async def login_attempt(login_data: LoginRequest):
+    try:
+        # Query to check if user exists and password matches
+        login_query = "SELECT userID FROM Users WHERE email = %s AND password = %s"
+        
+        drobeDatabaseCursor.execute(login_query, (login_data.email, login_data.password))
+        user = drobeDatabaseCursor.fetchone()
+        
+        if not user:
+            # Check if email exists
+            email_check_query = "SELECT userID FROM Users WHERE email = %s"
+            drobeDatabaseCursor.execute(email_check_query, (login_data.email,))
+            email_exists = drobeDatabaseCursor.fetchone()
+            
+            if not email_exists:
+                raise HTTPException(status_code=404, detail="No account with this email")
+            else:
+                raise HTTPException(status_code=401, detail="Incorrect password")
+        
+        userID = user[0]
+        return {"userID": userID, "message": "Login successful"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"Login error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
 
 #Following code would return all clothing articles for a user.
 @router.get("/getAllClothingArticlesByUserID/{userID}")
