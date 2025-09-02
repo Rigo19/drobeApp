@@ -1,0 +1,15 @@
+# Ignore everything except Python backend files
+../frontend/
+../docs/
+../images/
+../teamLogo/
+../README.md
+../.gitignore
+.git/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
