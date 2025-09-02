@@ -1,7 +1,7 @@
-var login_endpoint_URL = 'http://127.0.0.1:8000/loginAttempt/'
-var createWebSession_endpoint_URL = "http://127.0.0.1:8000/createWebSession/"
+// Import configuration
+let login_endpoint_URL = API_ENDPOINTS.LOGIN;
+let createWebSession_endpoint_URL = API_ENDPOINTS.CREATE_WEB_SESSION;
 let timesShownInvalid = 0;
-
 
 localStorage.setItem("sessionID", -1)
 localStorage.setItem("userID", -1)
@@ -10,30 +10,21 @@ document.getElementById("loginbutton").addEventListener('submit', (event) =>{
     event.preventDefault(); // Prevent the form from submitting normally
 })
 
-
 document.getElementById("loginbutton").addEventListener("click", async (event) => {
     attemptLogin();
 });
 
-
-
 async function deleteWebSession(){
     let userID = localStorage.getItem("userID");
-    let fullPath = "http://127.0.0.1:8000/deleteWebSession/" + userID;
-      const response = await fetch( fullPath, {
+    let fullPath = API_ENDPOINTS.DELETE_WEB_SESSION + userID;
+    const response = await fetch( fullPath, {
         method: "delete",
-      });
-
-  }
-
-
+    });
+}
 
 async function attemptLogin(){
-
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-
-
 
     const response = await fetch(login_endpoint_URL, {
         method: "post",
@@ -48,7 +39,6 @@ async function attemptLogin(){
     const userID = await response.json().then((result) => result.userID);
 
     console.log(response_status_code)
-
 
     if (response_status_code == 404){
         console.log("No account with this email")
@@ -73,13 +63,9 @@ async function attemptLogin(){
         await deleteWebSession();
         await createWebSession();
         
-        window.location.href = 'http://127.0.0.1:5500/main/frontend/index.html'
+        // Redirect to home page after successful login
+        window.location.href = '/home'
     }
-
-
-
-
-
 }
 
 async function createWebSession(){
@@ -94,11 +80,8 @@ async function createWebSession(){
     
     stats_code = response.status;
     if (stats_code == 200){
-
         message = await response.json().then((result) => result.message)
         sessionID = message["Session ID"]
         localStorage.setItem("sessionID", sessionID)
     }
-
-
 }
