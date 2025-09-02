@@ -312,7 +312,20 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
 });
 
 async function main() {
+<<<<<<< Updated upstream
   localStorage.setItem("userID", 0);
+=======
+  let sessionID = localStorage.getItem("sessionID");
+  let userID = localStorage.getItem("userID");
+  
+  let hasValidSession = await checkIfUserHasValidSession(userID, sessionID);
+  
+  
+  if (hasValidSession == false){ 
+    await deleteWebSession();
+    window.location.href = 'http://127.0.0.1:5500/main/frontend/login.html';
+  }
+>>>>>>> Stashed changes
 
   var allButton = document.getElementById('all');
   allButton.style.backgroundColor = '#e9ecef';
