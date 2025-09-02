@@ -5,6 +5,10 @@
       "destination": "/login.html"
     },
     {
+      "source": "/index",
+      "destination": "/index.html"
+    },
+    {
       "source": "/login",
       "destination": "/login.html"
     },
@@ -30,6 +34,12 @@
       "source": "/",
       "destination": "/login.html",
       "permanent": false
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/login.html"
     }
   ],
   "headers": [

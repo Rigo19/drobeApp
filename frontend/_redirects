@@ -1,0 +1,6 @@
+/ /login.html 200
+/login /login.html 200
+/home /index.html 200
+/closet /closet.html 200
+/outfits /myoutfits.html 200
+/register /registration.html 200
