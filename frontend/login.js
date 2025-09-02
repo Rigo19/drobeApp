@@ -6,12 +6,16 @@ let timesShownInvalid = 0;
 localStorage.setItem("sessionID", -1)
 localStorage.setItem("userID", -1)
 
-document.getElementById("loginbutton").addEventListener('submit', (event) =>{
-    event.preventDefault(); // Prevent the form from submitting normally
-})
-
-document.getElementById("loginbutton").addEventListener("click", async (event) => {
-    attemptLogin();
+// Handle form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('loginbutton');
+    
+    if (form) {
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            await attemptLogin();
+        });
+    }
 });
 
 async function deleteWebSession(){
@@ -26,45 +30,60 @@ async function attemptLogin(){
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    const response = await fetch(login_endpoint_URL, {
-        method: "post",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          email: email,
-          password: password
-        }),
-    })
+    // Clear previous error messages
+    let passworddiv = document.getElementById('passworddiv');
+    passworddiv.innerHTML = '';
 
-    const response_status_code = response.status;
-    const userID = await response.json().then((result) => result.userID);
+    console.log('Attempting login with:', email);
 
-    console.log(response_status_code)
+    try {
+        const response = await fetch(login_endpoint_URL, {
+            method: "post",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+              email: email,
+              password: password
+            }),
+        });
 
-    if (response_status_code == 404){
-        console.log("No account with this email")
-        let passworddiv = document.getElementById('passworddiv');
-        if (timesShownInvalid == 0){
-            passworddiv.appendChild(document.createTextNode("Invalid credentials"))
-            timesShownInvalid++;
+        const response_status_code = response.status;
+        console.log('Response status:', response_status_code);
+
+        if (response_status_code == 404){
+            console.log("No account with this email");
+            if (timesShownInvalid == 0){
+                passworddiv.innerHTML = "Invalid credentials";
+                timesShownInvalid++;
+            }
+            return;
         }
-        return;
-    }
 
-    else if (response_status_code == 401){
-        console.log("incorrect password")
-        if (timesShownInvalid == 0){
-            passworddiv.appendChild(document.createTextNode("Invalid credentials"))
-            timesShownInvalid++;
+        else if (response_status_code == 401){
+            console.log("incorrect password");
+            if (timesShownInvalid == 0){
+                passworddiv.innerHTML = "Invalid credentials";
+                timesShownInvalid++;
+            }
         }
-    }
 
-    else if (response_status_code == 201){
-        localStorage.setItem("userID", userID)
-        await deleteWebSession();
-        await createWebSession();
-        
-        // Redirect to home page after successful login
-        window.location.href = '/home'
+        else if (response_status_code == 201){
+            const result = await response.json();
+            const userID = result.userID;
+            
+            console.log('Login successful, userID:', userID);
+            localStorage.setItem("userID", userID);
+            
+            await deleteWebSession();
+            await createWebSession();
+            
+            // Redirect to home page after successful login
+            console.log('Redirecting to home...');
+            window.location.href = '/home';
+        }
+
+    } catch (error) {
+        console.error('Login error:', error);
+        passworddiv.innerHTML = "Login failed. Please try again.";
     }
 }
 
