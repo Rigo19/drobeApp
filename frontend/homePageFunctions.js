@@ -1,5 +1,5 @@
-var getUserClothingArticles_URL = "http://127.0.0.1:8000/getAllClothingArticlesByUserID/"
-var getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
+var getUserClothingArticles_URL = API_ENDPOINTS.GET_ALL_CLOTHING_ARTICLES;
+var getImageOfArticle = API_ENDPOINTS.GET_ARTICLE_IMAGE;
 
 // an array that holds data about each of the user's clothing article in the browser
 var articles = []

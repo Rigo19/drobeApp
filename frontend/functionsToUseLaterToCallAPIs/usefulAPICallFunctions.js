@@ -1,5 +1,5 @@
-imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
-clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
+imageCreation_url = API_ENDPOINTS.CREATE_ARTICLE_IMAGE + "0";
+clothingArticleCreation_API_url = API_ENDPOINTS.CREATE_CLOTHING_ARTICLE;
 
 document.getElementById("submitButton").addEventListener('submit', (event) =>{
     event.preventDefault();
