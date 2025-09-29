@@ -256,15 +256,21 @@ async function displayArticlesOfClothing(){
     var current_article = selectedArticles[i];
     var current_article_ID = current_article.clothingArticleID;
     console.log(current_article_ID);
-    var curr_article_img = await getImageFile(current_article_ID);
-    //copyOfBlobFiles.push(curr_article_img);
-
-    var curr_article_src = URL.createObjectURL(curr_article_img);
-    ArticleIDToImageSrc.set(current_article_ID, curr_article_src);
+    
     //add clothing image 
     const img = document.createElement('img');
-    //if image has a pic use if not use default image
-    img.src = curr_article_src;
+    
+    try {
+      var curr_article_img = await getImageFile(current_article_ID);
+      var curr_article_src = URL.createObjectURL(curr_article_img);
+      ArticleIDToImageSrc.set(current_article_ID, curr_article_src);
+      img.src = curr_article_src;
+    } catch (error) {
+      console.log("No image found for article", current_article_ID);
+      // Use a default placeholder image
+      img.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+";
+      img.alt = "No image available";
+    }
     //img.alt = ;
 
     //add clothing name
