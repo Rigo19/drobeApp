@@ -1,10 +1,10 @@
 //url for api endpoints used for uploading an image of clothing article 
-imageCreation_url = "http://127.0.0.1:8000/createArticleOfClothingImage/0";
+imageCreation_url = API_ENDPOINTS.CREATE_ARTICLE_IMAGE + "0";
 //url for api endpoints used for creating an articles of clothing in the database for the user
-clothingArticleCreation_API_url = "http://127.0.0.1:8000/createArticleOfClothing/";
+clothingArticleCreation_API_url = API_ENDPOINTS.CREATE_CLOTHING_ARTICLE;
 //url for api endpoints used for fetching all clothing articles 
-var getAllArticlesOfClothing_API_url  = "http://127.0.0.1:8000/getAllClothingArticles/";
-getImageOfArticle = "http://127.0.0.1:8000/get_images_for_clothing_article/";
+var getAllArticlesOfClothing_API_url = API_ENDPOINTS.GET_ALL_CLOTHING_ARTICLES;
+getImageOfArticle = API_ENDPOINTS.GET_ARTICLE_IMAGE;
 
 
 
