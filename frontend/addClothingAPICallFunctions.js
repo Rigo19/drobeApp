@@ -1,5 +1,5 @@
 //url for api endpoints used for uploading an image of clothing article 
-imageCreation_url = API_ENDPOINTS.CREATE_ARTICLE_IMAGE + "0";
+// Will be set dynamically with actual userID
 //url for api endpoints used for creating an articles of clothing in the database for the user
 clothingArticleCreation_API_url = API_ENDPOINTS.CREATE_CLOTHING_ARTICLE;
 //url for api endpoints used for fetching all clothing articles 
@@ -139,6 +139,10 @@ document.getElementById("submitButton").addEventListener('submit', (event) =>{
 async function createArticleImage(){
     var fileInput = document.querySelector('input[type="file"]')
     var formData = new FormData();
+    
+    // Get the actual userID from localStorage
+    var userID = localStorage.getItem("userID");
+    var imageCreation_url = API_ENDPOINTS.CREATE_ARTICLE_IMAGE + userID;
 
     formData.append("image", fileInput.files[0]);
     const response = await fetch(imageCreation_url, {
