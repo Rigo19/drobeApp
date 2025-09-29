@@ -87,7 +87,7 @@ async def create_web_session(session_data: CreateWebSessionRequest):
         
         # Insert session into WebSessions table
         insert_query = """
-            INSERT INTO WebSessions (userID, sessionID, timeCreated, timeExpires)
+            INSERT INTO WebSessions (sessionID, userIDAssociated, ipAddress, expiryTime)
             VALUES (%s, %s, %s, %s)
         """
         
@@ -95,9 +95,9 @@ async def create_web_session(session_data: CreateWebSessionRequest):
         expiry_time = current_time + timedelta(hours=24)  # Session expires in 24 hours
         
         drobeDatabaseCursor.execute(insert_query, (
-            session_data.userID,
             session_id,
-            current_time,
+            session_data.userID,
+            "127.0.0.1",  # Default IP address
             expiry_time
         ))
         
@@ -116,7 +116,7 @@ async def delete_web_session(userID: int):
         drobeDatabaseConnection, drobeDatabaseCursor = get_db_connection()
         
         # Delete all sessions for this user
-        delete_query = "DELETE FROM WebSessions WHERE userID = %s"
+        delete_query = "DELETE FROM WebSessions WHERE userIDAssociated = %s"
         drobeDatabaseCursor.execute(delete_query, (userID,))
         
         drobeDatabaseConnection.commit()
