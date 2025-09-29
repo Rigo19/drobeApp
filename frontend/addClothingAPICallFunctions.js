@@ -326,13 +326,14 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
 });
 
 async function checkIfUserHasValidSession(userID, sessionID) {
-  // For now, just check if userID and sessionID exist and are not -1
-  if (!userID || !sessionID || userID === '-1' || sessionID === '-1') {
+  // For now, just check if userID exists and is not -1
+  // Session validation is temporarily disabled to prevent logout issues
+  if (!userID || userID === '-1') {
     return false;
   }
   
   // TODO: Add actual session validation API call if needed
-  // For now, assume session is valid if userID and sessionID exist
+  // For now, assume session is valid if userID exists
   return true;
 }
 
@@ -348,10 +349,13 @@ async function main() {
   let sessionID = localStorage.getItem("sessionID");
   let userID = localStorage.getItem("userID");
   
-  let hasValidSession = await checkIfUserHasValidSession(userID, sessionID);
+  console.log("Session check - userID:", userID, "sessionID:", sessionID);
   
+  let hasValidSession = await checkIfUserHasValidSession(userID, sessionID);
+  console.log("Session valid:", hasValidSession);
   
   if (hasValidSession == false){ 
+    console.log("Session invalid, redirecting to login");
     await deleteWebSession();
     window.location.href = '/login.html';
   }
