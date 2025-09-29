@@ -208,7 +208,11 @@ async function displayArticlesOfClothingAFTERFiltering(){
 
 //get(fetcht) all the clothing pieces from the database of the specific user
 async function getAllArticlesOfClothing(){
-   const response = await fetch(getAllArticlesOfClothing_API_url, {
+   // Get the userID from localStorage
+   var userID = localStorage.getItem("userID");
+   var getAllArticlesOfClothing_API_url_with_user = getAllArticlesOfClothing_API_url + userID;
+   
+   const response = await fetch(getAllArticlesOfClothing_API_url_with_user, {
     method: "Get",
     headers: {"Content-Type": "application/json"}
    });
