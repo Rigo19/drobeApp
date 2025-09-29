@@ -14,8 +14,8 @@ while drobeDatabaseConnection == None or drobeDatabaseCursor == None:
 
 # Queries Section
 createArticleOfClothing_SQL_Query = ("INSERT INTO ArticlesOfClothing "
-                                     "(clothingTypeID, clothingType, clothingArticleName, userID, timeAdded, numberOfOutfitsAssociatedWith) "
-                                     "VALUES (%s, %s, %s, %s, %s, %s)")
+                                     "(clothingArticleName, clothingTypeID, clothingType, clothingSubtypeID, clothingSubtype, userID, timeAdded, numberOfOutfitsAssociatedWith) "
+                                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 createOutfit_SQL_Query = (
     "INSERT INTO Outfits (userID, outfitName) VALUES (%s, %s)"
 )
@@ -55,7 +55,7 @@ async def createArticleOfClothing(clothingArticle: clothingArticle):
     #Essentially here, I am lining up the values to be inserted into the ArticlesOfClothing database table. This is used in 
     # conjunction with the 'createArticleOfClothing_SQL_Query' query defined higher in the program
 
-    clothing_data = (clothingTypeID, clothingType, clothingArticleName, userID, timestamp, numberOfOutfitsAssociatedWith)
+    clothing_data = (clothingArticleName, clothingTypeID, clothingType, 1, "Default", userID, timestamp, numberOfOutfitsAssociatedWith)
 
     try:
         drobeDatabaseCursor.execute(createArticleOfClothing_SQL_Query, clothing_data)
