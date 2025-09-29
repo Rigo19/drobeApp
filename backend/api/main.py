@@ -30,12 +30,14 @@ async def health_check():
     return {"status": "healthy", "message": "Drobe API is working!"}
 
 # Try to import routers one by one to identify any issues
+# But don't let database connection errors crash the app
 try:
     from .routers import creation
     app.include_router(creation.router, prefix="/api")
     print("✅ Successfully imported creation router")
 except Exception as e:
     print(f"❌ Error importing creation router: {e}")
+    print("⚠️  App will continue without creation router")
 
 try:
     from .routers import deletion
@@ -43,6 +45,7 @@ try:
     print("✅ Successfully imported deletion router")
 except Exception as e:
     print(f"❌ Error importing deletion router: {e}")
+    print("⚠️  App will continue without deletion router")
 
 try:
     from .routers import modification
@@ -50,6 +53,7 @@ try:
     print("✅ Successfully imported modification router")
 except Exception as e:
     print(f"❌ Error importing modification router: {e}")
+    print("⚠️  App will continue without modification router")
 
 try:
     from .routers import retrieval
@@ -57,6 +61,7 @@ try:
     print("✅ Successfully imported retrieval router")
 except Exception as e:
     print(f"❌ Error importing retrieval router: {e}")
+    print("⚠️  App will continue without retrieval router")
 
 if __name__ == "__main__":
     import uvicorn
