@@ -336,6 +336,14 @@ async function checkIfUserHasValidSession(userID, sessionID) {
   return true;
 }
 
+async function deleteWebSession(){
+    let userID = localStorage.getItem("userID");
+    let fullPath = API_ENDPOINTS.DELETE_WEB_SESSION + userID;
+    const response = await fetch( fullPath, {
+        method: "delete",
+    });
+}
+
 async function main() {
   let sessionID = localStorage.getItem("sessionID");
   let userID = localStorage.getItem("userID");
