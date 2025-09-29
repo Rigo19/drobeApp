@@ -1,5 +1,6 @@
-imageCreation_url = API_ENDPOINTS.CREATE_ARTICLE_IMAGE + "0";
-clothingArticleCreation_API_url = API_ENDPOINTS.CREATE_CLOTHING_ARTICLE;
+// API endpoints for Railway backend
+imageCreation_url = "https://drobeapp-production.up.railway.app/api/createArticleOfClothingImage/0";
+clothingArticleCreation_API_url = "https://drobeapp-production.up.railway.app/api/createArticleOfClothing/";
 
 document.getElementById("submitButton").addEventListener('submit', (event) =>{
     event.preventDefault();
