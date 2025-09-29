@@ -63,6 +63,14 @@ except Exception as e:
     print(f"❌ Error importing retrieval router: {e}")
     print("⚠️  App will continue without retrieval router")
 
+try:
+    from .routers import user_management
+    app.include_router(user_management.router, prefix="/api")
+    print("✅ Successfully imported user_management router")
+except Exception as e:
+    print(f"❌ Error importing user_management router: {e}")
+    print("⚠️  App will continue without user_management router")
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))

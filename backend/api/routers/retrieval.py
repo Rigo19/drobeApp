@@ -30,14 +30,15 @@ async def login_attempt(login_data: LoginRequest):
         drobeDatabaseConnection, drobeDatabaseCursor = get_db_connection()
         
         # Query to check if user exists and password matches
-        login_query = "SELECT userID FROM Users WHERE email = %s AND password = %s"
+        login_query = "SELECT userID FROM UserInfo WHERE email = %s AND hashedPassword = %s"
         
+        # For now, we'll do a simple password check (in production, you should hash the password)
         drobeDatabaseCursor.execute(login_query, (login_data.email, login_data.password))
         user = drobeDatabaseCursor.fetchone()
         
         if not user:
             # Check if email exists
-            email_check_query = "SELECT userID FROM Users WHERE email = %s"
+            email_check_query = "SELECT userID FROM UserInfo WHERE email = %s"
             drobeDatabaseCursor.execute(email_check_query, (login_data.email,))
             email_exists = drobeDatabaseCursor.fetchone()
             
