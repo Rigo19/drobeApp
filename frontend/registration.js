@@ -29,15 +29,42 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             try {
-                // Here you would typically send the data to your backend
-                // For now, we'll simulate a successful registration
-                console.log('Registration data:', formData);
+                // Combine firstName and lastName into a single name field
+                const name = `${formData.firstName} ${formData.lastName}`;
                 
-                // Show success message
-                alert('Registration successful! Please log in with your new account.');
+                // Prepare data for backend API
+                const registrationData = {
+                    name: name,
+                    email: formData.email,
+                    password: formData.password,
+                    zipCode: formData.zipcode,
+                    timeZone: "EST", // Default timezone
+                    birthday: formData.birthday
+                };
                 
-                // Redirect to login page
-                window.location.href = '/login';
+                console.log('Sending registration data:', registrationData);
+                
+                // Call the backend API
+                const response = await fetch(API_ENDPOINTS.REGISTRATION, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registrationData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Show success message
+                    alert('Registration successful! Please log in with your new account.');
+                    
+                    // Redirect to login page
+                    window.location.href = '/login';
+                } else {
+                    // Show error message
+                    alert(`Registration failed: ${result.detail || 'Unknown error'}`);
+                }
                 
             } catch (error) {
                 console.error('Registration error:', error);
