@@ -9,8 +9,10 @@ from datetime import datetime, timedelta
 class CreateUserRequest(BaseModel):
     email: str
     password: str
-    firstName: str
-    lastName: str
+    name: str
+    zipCode: str
+    timeZone: str
+    birthday: str = None
 
 class CreateWebSessionRequest(BaseModel):
     userID: int
@@ -45,18 +47,19 @@ async def create_user(user_data: CreateUserRequest):
         
         # Insert new user
         insert_query = """
-            INSERT INTO UserInfo (name, email, hashedPassword, timeAccountCreated, timeZone, zipCode, isRegistrationConfirmed)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO UserInfo (name, email, hashedPassword, timeAccountCreated, timeZone, zipCode, birthday, isRegistrationConfirmed)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """
         
         current_time = datetime.now()
         drobeDatabaseCursor.execute(insert_query, (
-            f"{user_data.firstName} {user_data.lastName}",
+            user_data.name,
             user_data.email,
             hashed_password,
             current_time,
-            "CST",  # Default timezone
-            "00000",  # Default zip code
+            user_data.timeZone,
+            user_data.zipCode,
+            user_data.birthday,
             1  # Registration confirmed
         ))
         
