@@ -90,12 +90,11 @@ async function attemptLogin(){
 async function createWebSession(){
     userID = localStorage.getItem("userID");
 
-    let fullPath = createWebSession_endpoint_URL + userID;
-
-    const response = await fetch(fullPath, {
+    const response = await fetch(createWebSession_endpoint_URL, {
         method: "post",
         headers: {"Content-Type": "application/json"},
-        })
+        body: JSON.stringify({userID: parseInt(userID)})
+    })
     
     stats_code = response.status;
     if (stats_code == 200){
