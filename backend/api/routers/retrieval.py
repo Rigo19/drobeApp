@@ -23,7 +23,7 @@ def get_db_connection():
         raise HTTPException(status_code=500, detail="Database connection failed")
 
 # Login endpoint
-@router.post("/loginAttempt/")
+@router.post("/loginAttempt/", status_code=201)
 async def login_attempt(login_data: LoginRequest):
     try:
         # Get database connection
