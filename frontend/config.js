@@ -5,7 +5,7 @@ const isDevelopment = false; // Set to true for local development, false for pro
 
 const API_BASE_URL = isDevelopment 
     ? "http://127.0.0.1:8000" 
-    : "drobeapp-production.up.railway.app"; // Get this from Railway dashboard → Deployments tab
+    : "https://drobeapp-production.up.railway.app"; // Get this from Railway dashboard → Deployments tab
 
 // Export all API endpoints
 const API_ENDPOINTS = {
