@@ -39,8 +39,9 @@ async def create_user(user_data: CreateUserRequest):
         if existing_user:
             raise HTTPException(status_code=400, detail="User with this email already exists")
         
-        # Hash the password (simple hash for now)
-        hashed_password = hashlib.sha256(user_data.password.encode()).hexdigest()
+        # Hash the password using bcrypt
+        import bcrypt
+        hashed_password = bcrypt.hashpw(user_data.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         
         # Insert new user
         insert_query = """

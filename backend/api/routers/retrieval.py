@@ -29,28 +29,22 @@ async def login_attempt(login_data: LoginRequest):
         # Get database connection
         drobeDatabaseConnection, drobeDatabaseCursor = get_db_connection()
         
-        # Hash the provided password to compare with stored hash
-        import hashlib
-        hashed_password = hashlib.sha256(login_data.password.encode()).hexdigest()
+        # Get the stored password hash from database
+        login_query = "SELECT userID, hashedPassword FROM UserInfo WHERE email = %s"
         
-        # Query to check if user exists and password matches
-        login_query = "SELECT userID FROM UserInfo WHERE email = %s AND hashedPassword = %s"
+        drobeDatabaseCursor.execute(login_query, (login_data.email,))
+        user_data = drobeDatabaseCursor.fetchone()
         
-        drobeDatabaseCursor.execute(login_query, (login_data.email, hashed_password))
-        user = drobeDatabaseCursor.fetchone()
+        if not user_data:
+            raise HTTPException(status_code=404, detail="No account with this email")
         
-        if not user:
-            # Check if email exists
-            email_check_query = "SELECT userID FROM UserInfo WHERE email = %s"
-            drobeDatabaseCursor.execute(email_check_query, (login_data.email,))
-            email_exists = drobeDatabaseCursor.fetchone()
-            
-            if not email_exists:
-                raise HTTPException(status_code=404, detail="No account with this email")
-            else:
-                raise HTTPException(status_code=401, detail="Incorrect password")
+        userID, stored_hash = user_data
         
-        userID = user[0]
+        # Verify password using bcrypt
+        import bcrypt
+        if not bcrypt.checkpw(login_data.password.encode('utf-8'), stored_hash.encode('utf-8')):
+            raise HTTPException(status_code=401, detail="Incorrect password")
+        
         return {"userID": userID, "message": "Login successful"}
         
     except HTTPException:
