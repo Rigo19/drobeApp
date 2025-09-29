@@ -311,6 +311,17 @@ document.getElementById("submitButton").addEventListener("click", async (event) 
     window.location.reload();
 });
 
+async function checkIfUserHasValidSession(userID, sessionID) {
+  // For now, just check if userID and sessionID exist and are not -1
+  if (!userID || !sessionID || userID === '-1' || sessionID === '-1') {
+    return false;
+  }
+  
+  // TODO: Add actual session validation API call if needed
+  // For now, assume session is valid if userID and sessionID exist
+  return true;
+}
+
 async function main() {
   let sessionID = localStorage.getItem("sessionID");
   let userID = localStorage.getItem("userID");
